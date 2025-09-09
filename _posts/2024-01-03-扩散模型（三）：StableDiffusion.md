@@ -20,8 +20,7 @@ StableDiffusion也是一种扩散模型，但其相比较于一般的扩散模�
 
 如下，是StableDiffusion采样（即生成新数据）的过程：
 
-![11]({{ '/assets/images/diffusion_11.png' | relative_url }})
-{: style="width: 1200px; max-width: 100%;"}
+![11]({{ '/assets/images/diffusion_11.png' | relative_url }}){: width=800px style="float:center"} 
 
 由流程图可以看到，输入的文本（例子里是An astronout riding a horse）经过一个freezed的text feature extractor获取embedding（是利用CLIP模型预训练好的，这样可以保证和图像特征的语义一致性）。而初始的特征是从标准高斯分布里采样的一个$$64 \times 64$$的feature，其和text embedding一起喂给一个text conditioned latent UNet，得到更新的feature，再和text embedding一同喂给该UNet，如此重复$$N$$次，最终的feature，经过一个variational autoencoder Decoder，得到输出图像，即为去噪后的生成图像。
 
@@ -31,8 +30,7 @@ StableDiffusion在原论文里的名字叫做latent diffusion model（LDM），�
 
 StableDiffusion的框架里，有一个encoder，将原图片压缩到低维的latent feature上，还有一个decoder，对于latent code的输入，reconstruct到图片空间上。而在encoder将图片映射到latent feature上之后，便在latent feature上做扩散过程：
 
-![12]({{ '/assets/images/diffusion_12.png' | relative_url }})
-{: style="width: 1200px; max-width: 100%;"}
+![12]({{ '/assets/images/diffusion_12.png' | relative_url }}){: width=800px style="float:center"} 
 
 
 
@@ -42,13 +40,11 @@ StableDiffusion的框架里，有一个encoder，将原图片压缩到低维的l
 
 加了文本condition的StableDiffusion的反向扩散过程如下：
 
-![13]({{ '/assets/images/diffusion_13.png' | relative_url }})
-{: style="width: 1200px; max-width: 100%;"}
+![13]({{ '/assets/images/diffusion_13.png' | relative_url }}){: width=800px style="float:center"} 
 
 而具体来看改进后的UNet结构，则是如下图所示：
 
-![14]({{ '/assets/images/diffusion_14.png' | relative_url }})
-{: style="width: 1200px; max-width: 100%;"}
+![14]({{ '/assets/images/diffusion_14.png' | relative_url }}){: width=800px style="float:center"} 
 
 UNet新增加的多头注意力机制$$\textbf{Attention}(Q,K,V)$$的原理如下（以最右边的第一个模块为例）：
 
@@ -89,8 +85,7 @@ $$
 
 StableDiffusion的采样过程如下：
 
-![15]({{ '/assets/images/diffusion_15.png' | relative_url }})
-{: style="width: 1200px; max-width: 100%;"}
+![15]({{ '/assets/images/diffusion_15.png' | relative_url }}){: width=800px style="float:center"} 
 
 
 ## 4. 一些补充说明
@@ -99,14 +94,12 @@ StableDiffusion的采样过程如下：
 
 普通的DDPM流程图：
 
-![16]({{ '/assets/images/diffusion_16.png' | relative_url }})
-{: style="width: 1200px; max-width: 100%;"}
+![16]({{ '/assets/images/diffusion_16.png' | relative_url }}){: width=800px style="float:center"} 
 
 
 LDM流程图：
 
-![17]({{ '/assets/images/diffusion_17.png' | relative_url }})
-{: style="width: 1200px; max-width: 100%;"}
+![17]({{ '/assets/images/diffusion_17.png' | relative_url }}){: width=800px style="float:center"} 
 
 
 ### (2). 带有多头注意力机制的UNet的具体架构设计
