@@ -2,8 +2,8 @@
 layout: post
 comments: True
 title: "扩散模型（三）：StableDiffusion"
-date: 2024-08-01 01:09:00
-
+date: 2024-01-03 01:09:00
+tag: diffusion
 ---
 
 <!--more-->
