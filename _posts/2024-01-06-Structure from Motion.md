@@ -2,8 +2,8 @@
 layout: post
 comments: True
 title: "Structure from Motion"
-date: 2025-01-16 01:09:00
-
+date: 2024-01-06 01:09:00
+tags: reconstruction
 ---
 
 <!--more-->
@@ -13,16 +13,6 @@ date: 2025-01-16 01:09:00
 {:toc}
 
 ---
-
-https://github.com/ruili3/awesome-dust3r
-
-### \[**ICLR 2025 Spotlight**\] [MonST3R: A Simple Approach for Estimating Geometry in the Presence of Motion](https://monst3r-project.github.io/)
-
-### \[**CVPR 2024**\] [DUSt3R: Geometric 3D Vision Made Easy](https://europe.naverlabs.com/research/publications/dust3r-geometric-3d-vision-made-easy/)
-
-### \[**CVPR 2025 Oral**\] [VGGT: Visual Geometry Grounded Transformer](https://vgg-t.github.io/)
-
-### \[**CVPR 2024**\] [MASt3R – Matching And Stereo 3D Reconstruction](https://europe.naverlabs.com/blog/mast3r-matching-and-stereo-3d-reconstruction/)
 
 
 ## Structure from Motion
