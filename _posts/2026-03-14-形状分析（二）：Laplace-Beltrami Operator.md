@@ -90,6 +90,18 @@ $$M = \text{diag}(A_1, A_2, \cdots, A_V)$$
 
 **定理二**：离散Laplace-Beltrami算子为：$$\Delta f = M^{-1}L f$$
 
+我们成功将Laplace-Beltrami算子定义在了离散的三维网格上，且用一个矩阵$$M^{-1}L来表示它。从而如果我们要计算Laplace-Beltrami算子的eigenfunctions，即寻找$$\Delta \phi = \lambda \phi$$，我们只需要寻找$$M^{-1}L \phi = \lambda \phi$$，其中$$\phi$$为一个长度为$$\lvert \mathcal{V} \rVert$$的向量，用来表示在每个顶点上的值。即转化成了计算矩阵$$$$M^{-1}L$$的特征值和特征向量。
+
+将cotangent matrix公式显式地用于曲面上的离散Laplace-Beltrami算子，是1993年Pinkall和Polthier的论文"Computing discrete minimal surfaces and their conjugates"。他们利用cotangent公式给出了离散平均曲率向量的函数表示，并用它来计算离散极小曲面。这篇论文被广泛认为是将cotangent Laplacian引入计算几何和图形学领域的开创性工作。后来Desbrun, Meyer, Schröder, Barr在1999年的 SIGGRAPH论文"Implicit fairing of irregular meshes using diffusion and curvature flow"中进一步推广了这个公式的应用，而Meyer et al. 2003年的文章"Discrete differential-geometry operators for triangulated 2-manifolds"系统整理了包括Voronoi面积归一化在内的完整形式，成为后续文献中被引用最多的版本。
+
+> 参考文献
+> * \left[1 \right] Pinkall, Ulrich, and Konrad Polthier. "Computing discrete minimal surfaces and their conjugates." Experimental mathematics 2.1 (1993): 15-36.
+> * \left[2 \right] Desbrun, Mathieu, et al. "Implicit fairing of irregular meshes using diffusion and curvature flow." Proceedings of the 26th annual conference on Computer graphics and interactive techniques. 1999.
+> * \left[3 \right] Meyer, Mark, et al. "Discrete differential-geometry operators for triangulated 2-manifolds." Visualization and mathematics III. Berlin, Heidelberg: Springer Berlin Heidelberg, 2003. 35-57.
+
+
+### 4. 一些证明
+
 下面我们来证明定理一。cotangent Laplacian的推导方式有多种途径，最常用的是利用有限元方法，从Dirichlet能量的变分出发。
 
 第一步：在三角网格$$\mathcal{M}$$的每个三角形内部计算梯度
@@ -116,8 +128,6 @@ $$\int_{\mathcal{M}} \langle \nabla f, \nabla \phi \rangle dA = - \int_{\mathcal
 >具体推导过程为：考虑向量场$$\phi \nabla f$$，利用Leibniz律，对其取散度，可以得到$$\text{div}(\phi \nabla f) = \langle \nabla \phi, \nabla f \rangle + \phi \text{div}(\nabla f)$$。对两边在$$\mathcal{M}$$上积分，左边由散度定理变为边界积分（因为$$\mathcal{M}$$无边界，所以为0）：$$0 = \int_{\mathcal{M}} \langle \nabla \phi, \nabla f \rangle dA + \int_{\mathcal{M}} \phi \text{div}(\nabla f) dA$$，即$$\int_{\mathcal{M}} \langle \nabla \phi, \nabla f \rangle dA = -\int_{\mathcal{M}} \phi \text{div}(\nabla f) dA = \langle -\text{div}(\nabla f), \phi \rangle_{L^2}$$。
 
 结合上面两个结论，可以得到：$$\text{grad}_{L^2}E(f) = -\text{div}(\nabla f), \phi \rangle_{L^2} = - \Delta_{\mathcal{M}} f$$，即**$$\Delta_{\mathcal{M}}f$$是函数$$f$$在流形$$\mathcal{M}$$上的Dirichlet能量的负$$L^2$$梯度**。
-
-
 
 
 
