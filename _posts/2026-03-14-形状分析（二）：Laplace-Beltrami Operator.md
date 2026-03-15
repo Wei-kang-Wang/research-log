@@ -92,6 +92,11 @@ $$M = \text{diag}(A_1, A_2, \cdots, A_V)$$
 
 下面我们来证明定理一。cotangent Laplacian的推导方式有多种途径，最常用的是利用有限元方法，从Dirichlet能量的变分出发。
 
+第一步：在三角网格$$\mathcal{M}$$的每个三角形内部计算梯度
+
+定义在$$\mathcal{M}$$上的函数$$f$$在每个顶点$$i$$的取值为$$f_i$$，我们来在三角形内部做线性插值，从而给三角形内部那些没有$$f$$定义的点赋值。取一个三角形$$T$$，顶点为$$p_1, p_2, p_3$$，对应的函数值为$$f_1, f_2, f_3$$。那么对于三角形内部任何一点$$f$$，可以用重心坐标$$(\lambda_1, \lambda_2, \lambda_3)$$来表示$$f = \lambda_1 f_1 + \lambda_2 f_2 + \lambda_3 f_3$$，其中$$\lambda_1+\lambda_2 + \lambda_3 = 1$$。从而$$\nabla f = f_1 \nabla \lambda_1 + f_2 \nabla \lambda_2 + f_2 \nabla \lambda_3$$。对于$$\lambda_1$$，其在点$$p_1$$处取值为1，在对边处取值为0，
+
+
 对于流形$$\mathcal{M}$$上的函数$$f$$，其Dirichlet能量定义为：$$E(f) = \frac{1}{2}\int_{\mathcal{M}} \lVert \nabla f \rVert^2 dA$$。我们首先来计算$$E$$的$$L^2$$梯度。
 
 >什么叫$$E$$的$$L^2$$梯度？假设$$f$$是流形上的函数，考虑对$$f$$做一个微小扰动$$f \rightarrow f + \epsilon \phi$$，其中$$\phi$$是任意光滑的流形上的函数。$$E$$的一阶变分为：$$\mathop{\lim}\limits_{\epsilon \rightarrow 0} (E(f+\epsilon \phi) - E(f)) / \epsilon$$。如果存在某个函数$$g$$，使得对于任意的$$\phi$$，都有$$E$$的一阶变分等于$$\langle g, \phi \rangle_{L^2} = \int_{\mathcal{M}} g \phi dA$$，那么就称$$g$$是$$E$$在$$f$$处的$$L^2$$梯度，记作$$\text{grad}_{L^2}E(f) = g$$。
