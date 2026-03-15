@@ -69,6 +69,8 @@ $$(\Delta f)_i = \frac{1}{2A_i} \sum_{j \in \mathcal{N}(i)} (\text{cot} \alpha_{
 
 其中$$\alpha_{ij}, \beta_{ij}$$是边$$(i,j)$$对面的两个角，$$A_i$$是顶点$$i$$关联的面积，$$N(i)$$是$$i$$的1环邻域，如下图所示：
 
+![1]({{ '/assets/images/laplace_beltrami.png' | relative_url }}){: width=800px style="float:center"} 
+
 上述结果还可以写成矩阵形式。首先定义两个个大小为$$\lvert V \rvert \times \lvert V \rvert$$的矩阵
 
 刚度矩阵或cotangent矩阵$$L$$：
