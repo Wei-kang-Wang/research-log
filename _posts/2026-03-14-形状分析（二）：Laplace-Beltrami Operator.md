@@ -119,7 +119,7 @@ $$E(f + \epsilon \phi) = \frac{1}{2} \int_{\mathcal{M}} \lVert \nabla (f + \epsi
 
 根据一阶变分的定义
 
-$$\mathop{\lim}\limits_{\epsilon \rightarrow 0} (E(f+\epsilon \phi) - E(f)) / \epsilon = \int_{\mathcal{M}} \langle \nabla f, \nabla \phi \rangle dA$$
+$$\mathop{\lim}\limits_{\epsilon \rightarrow 0} \frac{E(f+\epsilon \phi) - E(f)}{\epsilon} = \int_{\mathcal{M}} \langle \nabla f, \nabla \phi \rangle dA$$
 
 由Green第一恒等式，可以得到：
 
