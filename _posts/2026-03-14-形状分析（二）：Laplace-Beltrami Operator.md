@@ -55,3 +55,85 @@ Laplace-Beltrami算子有如下重要的性质：
 > 参考文献
 > * $$\left[1\right]$$ Lévy, Bruno. "Laplace-beltrami eigenfunctions towards an algorithm that" understands" geometry." IEEE International Conference on Shape Modeling and Applications 2006 (SMI'06). IEEE, 2006.
 > * $$\left[2\right]$$ Nagar, Rajendra, and Shanmuganathan Raman. "Fast and accurate intrinsic symmetry detection." Proceedings of the European Conference on Computer Vision (ECCV). 2018.
+
+
+### 3. 离散情况下的Laplace-Beltrami算子
+
+在实际应用中，我们所操作的都是由$$\mathcal{M}=(\mathcal{V}, \mathcal{E})$$所表示的离散的三维网格来近似2维流形，从而我们需要将上述定义在连续流形上的Laplace-Beltrami算子离散化到离散的三维网格上。但因为Laplace-Beltrami算子是将函数映射到函数的算子，所以这样的离散化过程并不trivial。
+
+我们先给出一种最常见的离散化方法，即cotangent Laplacian（参考\textit{Pinkall & Polthier, 1993, Meyer et al., 2003}）的结果。
+
+**定理一**：对于三角网格$$\mathcal{M}$$，对于每个顶点$$i$$，离散Laplace-Beltrami算子作用于任意函数$$f$$的结果为：
+
+$$(\Delta f)_i = \frac{1}{2A_i} \sum_{j \in \mathcal{N}(i)} (\text{cot} \alpha_{ij} + \text{cot} \beta_{ij}) (f_i - f_j)$$
+
+其中$$\alpha_{ij}, \beta_{ij}$$是边$$(i,j)$$对面的两个角，$$A_i$$是顶点$$i$$关联的面积，$$N(i)$$是$$i$$的1环邻域，如下图所示：
+
+上述结果还可以写成矩阵形式。首先定义两个个大小为$$\lvert V \rvert \times \lvert V \rvert$$的矩阵
+
+刚度矩阵或cotangent矩阵$$L$$：
+
+$$
+L_{ij} = 
+\begin{cases}
+    -\frac{1}{2}(\text{cot} \alpha_{ij} + \text{cot} \beta_{ij}) & (i,j) \in \mathcal{E} \\
+    -\sum_{k \neq i} L_{ik}  & i=j \\
+    0   & \text{otherwise}
+\end{cases}
+$$
+
+质量矩阵$$M$$：
+
+$$M = \text{diag}(A_1, A_2, \cdots, A_V)$$
+
+其中$$A_i$$是顶点$$i$$关联的面积（Voronoi面积或者barycentric面积的$$1/3$$）。
+
+**定理二**：离散Laplace-Beltrami算子为：$$\Delta f = M^{-1}L f$$
+
+下面我们来证明定理一。cotangent Laplacian的推导方式有多种途径，最常用的是利用有限元方法，从Dirichlet能量的变分出发。
+
+对于流形$$\mathcal{M}$$上的函数$$f$$，其Dirichlet能量定义为：$$E(f) = \frac{1}{2}\int_{\mathcal{M}} \lVert \nabla f \rVert^2 dA$$。我们首先来计算$$E$$的$$L^2$$梯度。
+
+>什么叫$$E$$的$$L^2$$梯度？假设$$f$$是流形上的函数，考虑对$$f$$做一个微小扰动$$f \rightarrow f + \epsilon \phi$$，其中$$\phi$$是任意光滑的流形上的函数。$$E$$的一阶变分为：$$\mathop{\lim}\limits_{\epsilon \rightarrow 0} (E(f+\epsilon \phi) - E(f)) / \epsilon$$。如果存在某个函数$$g$$，使得对于任意的$$\phi$$，都有$$E$$的一阶变分等于$$\langle g, \phi \rangle_{L^2} = \int_{\mathcal{M}} g \phi dA$$，那么就称$$g$$是$$E$$在$$f$$处的$$L^2$$梯度，记作$$\text{grad}_{L^2}E(f) = g$$。
+
+依据$$E$$的定义，我们来计算它的一阶变分：
+
+$$E(f + \epsilon \phi) = \frac{1}{2} \int_{\mathcal{M}} \lVert \nabla (f + \epsilon \phi) \rVert^2 dA = \frac{1}{2} \int_{\mathcal{M}} \langle \nabla f + \epsilon \nabla \phi, \nabla f + \epsilon \nabla \phi \rangle dA = \frac{1}{2} \int_{\mathcal{M}} \left[ \lVert \nabla f \rVert^2 + 2\epsilon \langle \nabla f, \nabla \phi \rangle + \epsilon^2 \lVert \nabla \phi \rVert^2 \right] dA$$
+
+根据一阶变分的定义
+
+$$\mathop{\lim}\limits_{\epsilon \rightarrow 0} (E(f+\epsilon \phi) - E(f)) / \epsilon = \int_{\mathcal{M}} \langle \nabla f, \nabla \phi \rangle dA$$
+
+由Green第一恒等式，可以得到：
+
+$$\int_{\mathcal{M}} \langle \nabla f, \nabla \phi \rangle dA = - \int_{\mathcal{M}} (\text{div} (\nabla f)) \phi dA = \langle -\text{div}(\nabla f), \phi \rangle_{L^2}$$
+
+>具体推导过程为：考虑向量场$$\phi \nabla f$$，利用Leibniz律，对其取散度，可以得到$$\text{div}(\phi \nabla f) = \langle \nabla \phi, \nabla f \rangle + \phi \text{div}(\nabla f)$$。对两边在$$\mathcal{M}$$上积分，左边由散度定理变为边界积分（因为$$\mathcal{M}$$无边界，所以为0）：$$0 = \int_{\mathcal{M}} \langle \nabla \phi, \nabla f \rangle dA + \int_{\mathcal{M}} \phi \text{div}(\nabla f) dA$$，即$$\int_{\mathcal{M}} \langle \nabla \phi, \nabla f \rangle dA = -\int_{\mathcal{M}} \phi \text{div}(\nabla f) dA = \langle -\text{div}(\nabla f), \phi \rangle_{L^2}$$。
+
+结合上面两个结论，可以得到：$$\text{grad}_{L^2}E(f) = -\text{div}(\nabla f), \phi \rangle_{L^2} = - \Delta_{\mathcal{M}} f$$，即**$$\Delta_{\mathcal{M}}f$$是函数$$f$$在流形$$\mathcal{M}$$上的Dirichlet能量的负$$L^2$$梯度**。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
