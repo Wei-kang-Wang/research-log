@@ -61,7 +61,7 @@ Laplace-Beltrami算子有如下重要的性质：
 
 在实际应用中，我们所操作的都是由$$\mathcal{M}=(\mathcal{V}, \mathcal{E})$$所表示的离散的三维网格来近似2维流形，从而我们需要将上述定义在连续流形上的Laplace-Beltrami算子离散化到离散的三维网格上。但因为Laplace-Beltrami算子是将函数映射到函数的算子，所以这样的离散化过程并不trivial。
 
-我们先给出一种最常见的离散化方法，即cotangent Laplacian（参考\textit{Pinkall & Polthier, 1993, Meyer et al., 2003}）的结果。
+我们先给出一种最常见的离散化方法，即cotangent Laplacian（参考*Pinkall & Polthier, 1993, Meyer et al., 2003*）的结果。
 
 **定理一**：对于三角网格$$\mathcal{M}$$，对于每个顶点$$i$$，离散Laplace-Beltrami算子作用于任意函数$$f$$的结果为：
 
