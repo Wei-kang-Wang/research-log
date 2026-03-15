@@ -95,9 +95,9 @@ $$M = \text{diag}(A_1, A_2, \cdots, A_V)$$
 将cotangent matrix公式显式地用于曲面上的离散Laplace-Beltrami算子，是1993年Pinkall和Polthier的论文"Computing discrete minimal surfaces and their conjugates"。他们利用cotangent公式给出了离散平均曲率向量的函数表示，并用它来计算离散极小曲面。这篇论文被广泛认为是将cotangent Laplacian引入计算几何和图形学领域的开创性工作。后来Desbrun, Meyer, Schröder, Barr在1999年的 SIGGRAPH论文"Implicit fairing of irregular meshes using diffusion and curvature flow"中进一步推广了这个公式的应用，而Meyer et al. 2003年的文章"Discrete differential-geometry operators for triangulated 2-manifolds"系统整理了包括Voronoi面积归一化在内的完整形式，成为后续文献中被引用最多的版本。
 
 > 参考文献
-> * $\left[1 \right]$ Pinkall, Ulrich, and Konrad Polthier. "Computing discrete minimal surfaces and their conjugates." Experimental mathematics 2.1 (1993): 15-36.
-> * $\left[2 \right]$ Desbrun, Mathieu, et al. "Implicit fairing of irregular meshes using diffusion and curvature flow." Proceedings of the 26th annual conference on Computer graphics and interactive techniques. 1999.
-> * $\left[3 \right]$ Meyer, Mark, et al. "Discrete differential-geometry operators for triangulated 2-manifolds." Visualization and mathematics III. Berlin, Heidelberg: Springer Berlin Heidelberg, 2003. 35-57.
+> * $$\left[1 \right]$$ Pinkall, Ulrich, and Konrad Polthier. "Computing discrete minimal surfaces and their conjugates." Experimental mathematics 2.1 (1993): 15-36.
+> * $$\left[2 \right]$$ Desbrun, Mathieu, et al. "Implicit fairing of irregular meshes using diffusion and curvature flow." Proceedings of the 26th annual conference on Computer graphics and interactive techniques. 1999.
+> * $$\left[3 \right]$$ Meyer, Mark, et al. "Discrete differential-geometry operators for triangulated 2-manifolds." Visualization and mathematics III. Berlin, Heidelberg: Springer Berlin Heidelberg, 2003. 35-57.
 
 
 ### 4. 一些证明
