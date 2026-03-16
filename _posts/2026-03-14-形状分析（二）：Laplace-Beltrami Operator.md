@@ -199,9 +199,9 @@ $$E(f)_1 = \sum_{T \in \mathcal{F}} \sum_{i,j=1,2,3, i \neq j} f_i f_j A_{T} \la
 
 $$
 \begin{align}
-E(f)_2 &= \sum_{T \in \mathcal{F}} \sum_{i=1,2,3} f_i f_i A_{T} \langle \nabla \lambda_i, \nabla \lambda_i \rangle = \sum_{T \in \mathcal{F}} \sum_{i=1,2,3} f_i^2 A_{T} \frac{1}{h_{i,T}^2} \\
-&= \sum_{T \in \mathcal{F}} \sum_{i=1,2,3} f_i^2 \frac{e_{i,T}h_{i,T}}{2h_{i,T}^2} = \sum_{T \in \mathcal{F}} \sum_{i=1,2,3} f_i^2 \frac{e_{i,T}}{2h_{i,T}} \\
-&= \sum_{T \in \mathcal{F}} \sum_{i=1,2,3} f_i^2 \frac{1}{2} (\text{cot} \theta_{i_1, T} + \text{cot} \theta_{i_2, T})$$
+E(f)_2 &= \sum_{T \in \mathcal{F}} \sum_{i=1,2,3} f_i f_i A_T \langle \nabla \lambda_i, \nabla \lambda_i \rangle = \sum_{T \in \mathcal{F}} \sum_{i=1,2,3} f_i^2 A_T \frac{1}{h_{i,T}^2} \\
+&= \sum_{T \in \mathcal{F}} \sum_{i=1,2,3} f_i^2 \frac{e_{i,T} h_{i,T}}{2h_{i,T}^2} = \sum_{T \in \mathcal{F}} \sum_{i=1,2,3} f_i^2 \frac{e_{i,T}}{2h_{i,T}} \\
+&= \sum_{T \in \mathcal{F}} \sum_{i=1,2,3} f_i^2 \frac{1}{2} (\text{cot} \theta_{i_1, T} + \text{cot} \theta_{i_2, T})
 \end{align}
 $$
 
