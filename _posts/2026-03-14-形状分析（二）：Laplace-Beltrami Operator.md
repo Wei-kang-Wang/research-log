@@ -69,7 +69,7 @@ $$(\Delta f)_i = \frac{1}{2A_i} \sum_{j \in \mathcal{N}(i)} (\text{cot} \alpha_{
 
 其中$$\alpha_{ij}, \beta_{ij}$$是边$$(i,j)$$对面的两个角，$$A_i$$是顶点$$i$$关联的面积，$$N(i)$$是$$i$$的1环邻域，如下图所示：
 
-![1]({{ '/assets/images/laplace_beltrami.png' | relative_url }}){: width=200px style="float:center"} 
+![1]({{ '/assets/images/laplace_beltrami.png' | relative_url }}){: width=100px style="float:center"} 
 
 上述结果还可以写成矩阵形式。首先定义两个个大小为$$\lvert V \rvert \times \lvert V \rvert$$的矩阵
 
@@ -179,7 +179,7 @@ $$
 
 第三步：推导cotangent权重
 
-考虑$$\langle \nabla \lambda_i, \nabla \lambda_j \rangle$$，$$i \neq j$$的计算结果。以$$\langle \nabla \lambda_1, \nabla \lambda_2 \rangle$$为例，假设顶点$$f_3$$处的角大小为$$\theta_3$$，$$$$\langle \nabla \lambda_1, \nabla \lambda_2 \rangle$$的物理意义是两个向量的内积，其模长分别为点$$f_1,f_2$$对应的高的倒数，夹角为$$\pi - \theta_3：
+考虑$$\langle \nabla \lambda_i, \nabla \lambda_j \rangle$$，$$i \neq j$$的计算结果。以$$\langle \nabla \lambda_1, \nabla \lambda_2 \rangle$$为例，假设顶点$$f_3$$处的角大小为$$\theta_3$$，$$\langle \nabla \lambda_1, \nabla \lambda_2 \rangle$$的物理意义是两个向量的内积，其模长分别为点$$f_1,f_2$$对应的高的倒数，夹角为$$\pi - \theta_3：
 
 $$\langle \nabla \lambda_1, \nabla \lambda_2 \rangle = \frac{1}{h_1h_2} \text{cos}(\pi - \theta_3)= -\frac{\text{cos}(\theta_3)}{h_1h_2}$$
 
