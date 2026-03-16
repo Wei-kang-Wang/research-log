@@ -157,7 +157,7 @@ $$\lambda_1(f) = \frac{A(f,f_2, f_3)}{A(f_1, f_2, f_3)} = \frac{\left[ (f - f_2)
 
 令$$e_{23} = f_3 - f_2$$，从而
 
-$$\lambda_1(f) = \frac{(f \times e_{23}) \cdot \pmb{n} - (f_2 \times e_{23}) \cdot \pmb{n}{2A} = \frac{(e_{23} \times \pmb{n}) \cdot f - (f_2 \times e_{23}) \cdot \pmb{n}{2A}$$
+$$\lambda_1(f) = \frac{(f \times e_{23}) \cdot \pmb{n} - (f_2 \times e_{23}) \cdot \pmb{n}}{2A} = \frac{(e_{23} \times \pmb{n}) \cdot f - (f_2 \times e_{23}) \cdot \pmb{n}}{2A}$$
 
 其对$$f=(x,y,z)$$的梯度为：
 
