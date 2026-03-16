@@ -169,8 +169,8 @@ $$\nabla \lambda_1 = \frac{\boldsymbol{e_{23}} \times \boldsymbol{n}}{2A_T}$$
 
 $$
 \begin{align}
-E_T &= \int_{T} \lVert \nabla f \rVert^2 dA = \int_{T} \lVert f_1 \nabla \lambda_1 + f_2 \nabla \lambda_2 + f_3 \nabla \lambda_3 \rVert^2 dA = A_T \lVert f_1 \nabla \lambda_1 + f_2 \nabla \lambda_2 + f_3 \nabla \lambda_3 \rVert^2 \\
-&= A_T \langle  f_1 \nabla \lambda_1 + f_2 \nabla \lambda_2 + f_3 \nabla \lambda_3, f_1 \nabla \lambda_1 + f_2 \nabla \lambda_2 + f_3 \nabla \lambda_3 \rangle = A_T \sum_{i=1}^3 f_i^2 \langle \nabla \lambda_i, \nabla \lambda_i \rangle + 2A_T \sum_{1 \leq i < j \leq 3} f_i f_j \langle \nabla \lambda_i, \nabla \lambda_j \rangle
+E_T &= \frac{1}{2} \int_{T} \lVert \nabla f \rVert^2 dA = \frac{1}{2} \int_{T} \lVert f_1 \nabla \lambda_1 + f_2 \nabla \lambda_2 + f_3 \nabla \lambda_3 \rVert^2 dA = \frac{1}{2} A_T \lVert f_1 \nabla \lambda_1 + f_2 \nabla \lambda_2 + f_3 \nabla \lambda_3 \rVert^2 \\
+&= \frac{1}{2} A_T \langle  f_1 \nabla \lambda_1 + f_2 \nabla \lambda_2 + f_3 \nabla \lambda_3, f_1 \nabla \lambda_1 + f_2 \nabla \lambda_2 + f_3 \nabla \lambda_3 \rangle = \frac{1}{2} A_T \sum_{i=1}^3 f_i^2 \langle \nabla \lambda_i, \nabla \lambda_i \rangle + A_T \sum_{1 \leq i < j \leq 3} f_i f_j \langle \nabla \lambda_i, \nabla \lambda_j \rangle
 \end{align}
 $$
 
@@ -195,16 +195,16 @@ $$A_T f_1^2 \langle \nabla \lambda_1, \nabla \lambda_1 \rangle = \frac{1}{2}\lVe
 
 按照之前计算的每个三角形的Dirichlet能量$$E_T$$，假设该三角网格的所有三角面的集合为$$\mathcal{F}$$，将所有三角形的Dirichlet能量加和，即得到这个三角网格的总Dirichlet能量
 
-$$E(f) = \sum_{T \in \mathcal{F}} E_T = \sum_{T \in \mathcal{F}} A_T \sum_{i=1}^3 f_i^2 \langle \nabla \lambda_i, \nabla \lambda_i \rangle + \sum_{T \in \mathcal{F}} 2A_T \sum_{1 \leq i < j \leq 3} f_i f_j \langle \nabla \lambda_i, \nabla \lambda_j \rangle$$
+$$E(f) = \sum_{T \in \mathcal{F}} E_T = \frac{1}{2} \sum_{T \in \mathcal{F}} A_T \sum_{i=1}^3 f_i^2 \langle \nabla \lambda_i, \nabla \lambda_i \rangle + \sum_{T \in \mathcal{F}} A_T \sum_{1 \leq i < j \leq 3} f_i f_j \langle \nabla \lambda_i, \nabla \lambda_j \rangle$$
 
-注意，每条边$$(i,j)$$都恰好被两个三角形共享，假设其对面角分别为$$\alpha_{ij}, \beta_{ij}$$，那么上述式子最后结果的第一项为：
+注意，每条边$$(i,j)$$都恰好被两个三角形共享，假设其对面角分别为$$\alpha_{ij}, \beta_{ij}$$，那么上述式子第二项为：
 
-$$E(f)_1 = \sum_{T \in \mathcal{F}} \sum_{i,j=1,2,3, i \neq j} f_i f_j A_{T} \langle \nabla \lambda_i, \nabla \lambda_j \rangle = -\frac{1}{2} \sum_{(i,j) \in \mathcal{E}} (\text{cot} \alpha_{ij} + \text{cot} \beta_{ij}) f_i f_j$$
+$$E(f)_2 = \sum_{T \in \mathcal{F}} 2A_T \sum_{1 \leq i < j \leq 3} f_i f_j \langle \nabla \lambda_i, \nabla \lambda_j \rangle = -\frac{1}{2} \sum_{(i,j) \in \mathcal{E}} (\text{cot} \alpha_{ij} + \text{cot} \beta_{ij}) f_i f_j$$
 
-上述式子最后结果的第二项为：
+上述式子最后结果的第一项为：
 
 $$
-E(f)_2 = \sum_{T \in \mathcal{F}} \sum_{i=1,2,3} f_i f_i A_T \langle \nabla \lambda_i, \nabla \lambda_i \rangle = \sum_{T \in \mathcal{F}} \sum_{i=1,2,3} f_i^2 A_T \frac{1}{h_{i,T}^2} = \sum_{T \in \mathcal{F}} \sum_{i=1,2,3} f_i^2 \frac{e_{i,T} h_{i,T}}{2h_{i,T}^2} = \sum_{T \in \mathcal{F}} \sum_{i=1,2,3} f_i^2 \frac{e_{i,T}}{2h_{i,T}} = \sum_{T \in \mathcal{F}} \sum_{i=1,2,3} f_i^2 \frac{1}{2} (\text{cot} \theta_{i_1, T} + \text{cot} \theta_{i_2, T})
+E(f)_1 = \frac{1}{2} \sum_{T \in \mathcal{F}} A_T \sum_{i=1}^3 f_i^2 \langle \nabla \lambda_i, \nabla \lambda_i \rangle = \sum_{T \in \mathcal{F}} \sum_{i=1,2,3} f_i^2 A_T \frac{1}{h_{i,T}^2} = \sum_{T \in \mathcal{F}} \sum_{i=1,2,3} f_i^2 \frac{e_{i,T} h_{i,T}}{2h_{i,T}^2} = \sum_{T \in \mathcal{F}} \sum_{i=1,2,3} f_i^2 \frac{e_{i,T}}{2h_{i,T}} = \sum_{T \in \mathcal{F}} \sum_{i=1,2,3} f_i^2 \frac{1}{2} (\text{cot} \theta_{i_1, T} + \text{cot} \theta_{i_2, T})
 $$
 
 其中$$h_{i,T}$$表示三角形$$T$$里顶点$$i$$对应的高，$$e_{i,T}$$表示三角形$$T$$里顶点$$i$$对应的边，$$\theta_{i_1, T}, \theta_{i_2, T}$$表示三角形$$T$$里除去顶点$$i$$对应的那个角的另外两个角。
