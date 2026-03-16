@@ -205,7 +205,7 @@ $$
 
 注意到：
 
-$$E(f)_2 = \sum_{T \in \mathcal{F}} \sum_{i=1,2,3} f_i^2 \frac{1}{2} (\text{cot} \theta_{i_1, T} + \text{cot} \theta_{i_2, T}) = \sum_{T \in \mathcal{F}} \sum_{i,j=1,2,3, i \neq j} \text{cot} \theta_{ij} (f_i^2 + f_j^2) = \sum_{(i,j) \in \mathcal{E}} \frac{1}{4} (f_i^2 + f_j^2) (\text{cot} \alpha_{ij} + \text{cot} \beta_{ij})$$
+$$E(f)_2 = \sum_{T \in \mathcal{F}} \sum_{i=1,2,3} f_i^2 \frac{1}{2} (\text{cot} \theta_{i_1, T} + \text{cot} \theta_{i_2, T}) = \frac{1}{2} \sum_{T \in \mathcal{F}} \sum_{i,j=1,2,3, i \neq j} \text{cot} \theta_{ij} (f_i^2 + f_j^2) = \sum_{(i,j) \in \mathcal{E}} \frac{1}{4} (f_i^2 + f_j^2) (\text{cot} \alpha_{ij} + \text{cot} \beta_{ij})$$
 
 其中$$\theta_{ij}$$表示边$$e_{ij}$$对应的角。
 
