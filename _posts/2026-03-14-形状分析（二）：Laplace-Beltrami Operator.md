@@ -174,6 +174,8 @@ E_T &= \int_{T} \lVert \nabla f \rVert^2 dA = \int_{T} \lVert f_1 \nabla \lambda
 \end{align}
 $$
 
+> 前一项对应三角形$$T$$的顶点，后一项对应三角形$$T$$的边。
+
 **第三步：推导cotangent权重**
 
 考虑$$\langle \nabla \lambda_i, \nabla \lambda_j \rangle$$，$$i \neq j$$的计算，以$$\langle \nabla \lambda_1, \nabla \lambda_2 \rangle$$为例，假设顶点$$f_3$$处的角大小为$$\theta_3$$，$$\langle \nabla \lambda_1, \nabla \lambda_2 \rangle$$的物理意义是两个向量的内积，其模长分别为点$$f_1,f_2$$对应的高的倒数，夹角为$$\pi - \theta_3$$：
@@ -189,11 +191,11 @@ $$A_T f_1^2 \langle \nabla \lambda_1, \nabla \lambda_1 \rangle = \frac{1}{2}\lVe
 ![2]({{ '/assets/images/laplace_beltrami_1.png' | relative_url }}){: width=100px style="float:center"}
 
 
-第四步：组装三角网格所有三角形的Dirichlet能量
+**第四步：组装三角网格所有三角形的Dirichlet能量**
 
-按照之前计算的每个三角形的Dirichlet能量为$$A \sum_{i,j=1,2,3} f_i f_j \langle \nabla \lambda_i, \nabla \lambda_j \rangle$$，将所有三角形的Dirichlet能量加和，即得到这个三角网格的总Dirichlet能量
+按照之前计算的每个三角形的Dirichlet能量$$E_T$$，假设该三角网格的所有三角面的集合为$$\mathcal{F}$$，将所有三角形的Dirichlet能量加和，即得到这个三角网格的总Dirichlet能量
 
-$$E(f) = \sum_{T \in \mathcal{F}} \sum_{i,j=1,2,3} f_i f_j A_{T} \langle \nabla \lambda_i, \nabla \lambda_j \rangle = \sum_{T \in \mathcal{F}} \sum_{i,j=1,2,3, i \neq j} f_i f_j A_{T} \langle \nabla \lambda_i, \nabla \lambda_j \rangle +  \sum_{T \in \mathcal{F}} \sum_{i=1,2,3} f_i f_i A_{T} \langle \nabla \lambda_i, \nabla \lambda_i \rangle$$
+$$E(f) = \sum_{T \in \mathcal{F}} E_T = \sum_{T \in \mathcal{F}} A_T \sum_{i=1}^3 f_i^2 \langle \nabla \lambda_i, \nabla \lambda_i \rangle + \sum_{T \in \mathcal{F}} 2A_T \sum_{1 \leq i < j \leq 3} f_i f_j \langle \nabla \lambda_i, \nabla \lambda_j \rangle$$
 
 注意，每条边$$(i,j)$$都恰好被两个三角形共享，假设其对面角分别为$$\alpha_{ij}, \beta_{ij}$$，那么上述式子最后结果的第一项为：
 
