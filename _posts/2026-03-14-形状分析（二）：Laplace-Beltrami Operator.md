@@ -285,7 +285,7 @@ $$\int_{T} g \Delta f dA = \Delta \boldsymbol{ f}^{\top} M_T \boldsymbol{g}$$
 
 $$\int_{\mathcal{M}} g \Delta f dA = \sum_{T \in \mathcal{F}} \int_{T} g \Delta f dA = \sum_{T \in \mathcal{F}} \Delta \boldsymbol{ f}^{\top} M_T \boldsymbol{g} = \Delta \boldsymbol{ f}^{\top} (\sum_{T \in \mathcal{F}} M_T) \boldsymbol{g}$$
 
-记$$M = \sum_{T \in \mathcal{F}} M_T$$，那么M就是整个三角网格的面积矩阵。
+记$$M = \sum_{T \in \mathcal{F}} M_T$$，那么$$M$$就是整个三角网格的面积矩阵。
 
 最后，比较上面Green第一恒等式左侧和右侧计算出来的结果，即可得：
 
