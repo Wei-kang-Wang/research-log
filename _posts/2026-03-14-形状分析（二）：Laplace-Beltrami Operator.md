@@ -151,11 +151,11 @@ $$\lambda_1 = \frac{A(f,f_2, f_3)}{A(f_1, f_2, f_3)}$$
 
 > 注意，$$\lambda_1 \geq 0$$因为点$$f$$在三角形$$\triangle_{f_1f_2f_3}$$内部。
 
-$$\lambda_1$$是关于$$f=(x,y,z)$$的函数
+记$$A_T = A(f_1, f_2, f_3)$$。$$\lambda_1$$是关于$$f=(x,y,z)$$的函数
 
 $$\lambda_1(f) = \frac{A(f,f_2, f_3)}{A(f_1, f_2, f_3)} = \frac{\left[ (f - f_2) \times (f_3 - f_2) \right] \cdot \pmb{n}}{2A} = \frac{(f \times \pmb{e_{23}}) \cdot \pmb{n} - (f_2 \times \pmb{e_{23}}) \cdot \pmb{n}}{2A} = \frac{(\pmb{e_{23}} \times \pmb{n}) \cdot f - (f_2 \times \pmb{e_{23}}) \cdot \pmb{n}}{2A}$$
 
-其中$$A$$表示三角形面积，$$\pmb{n}$$是垂直于三角形$$\triangle_{f_1f_2f_3}$$平面的单位法向量（三角形$$\triangle_{f_1f_2f_3}$$和三角形$$\triangle_{ff_2f_3}$$在同一个平面内）。
+其中$$\pmb{n}$$是垂直于三角形$$\triangle_{f_1f_2f_3}$$平面的单位法向量（三角形$$\triangle_{f_1f_2f_3}$$和三角形$$\triangle_{ff_2f_3}$$在同一个平面内）。
 
 从而$$\nabla \lambda_1(f)$$对$$f=(x,y,z)$$的梯度为：
 
