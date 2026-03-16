@@ -195,6 +195,18 @@ $$E(f) = \sum_{T \in \mathcal{F}} \sum_{i,j=1,2,3} f_i f_j A_{T} \langle \nabla 
 
 $$E(f)_1 = \sum_{T \in \mathcal{F}} \sum_{i,j=1,2,3, i \neq j} f_i f_j A_{T} \langle \nabla \lambda_i, \nabla \lambda_j \rangle = -\frac{1}{2} \sum_{(i,j) \in \mathcal{E}} (\text{cot} \alpha_{ij} + \text{cot} \beta_{ij}) f_i f_j$$
 
+上述式子最后结果的第二项为：
+
+$$
+\begin{align}
+E(f)_2 &= \sum_{T \in \mathcal{F}} \sum_{i=1,2,3} f_i f_i A_{T} \langle \nabla \lambda_i, \nabla \lambda_i \rangle = \sum_{T \in \mathcal{F}} \sum_{i=1,2,3} f_i^2 A_{T} \frac{1}{h_{i,T}^2} \\
+&= \sum_{T \in \mathcal{F}} \sum_{i=1,2,3} f_i^2 \frac{e_{i,T}h_{i,T}}{2h_{i,T}^2} = \sum_{T \in \mathcal{F}} \sum_{i=1,2,3} f_i^2 \frac{e_{i,T}}{2h_{i,T}} \\
+&= \sum_{T \in \mathcal{F}} \sum_{i=1,2,3} f_i^2 \frac{1}{2} (\text{cot} \theta_{i_1, T} + \text{cot} \theta_{i_2, T})$$
+\end{align}
+$$
+
+其中$$h_{i,T}$$表示三角形$$T$$里顶点$$i$$对应的高，$$e_{i,T}$$表示三角形$$T$$里顶点$$i$$对应的边，$$\theta_{i_1, T}, \theta_{i_2, T}$$表示三角形$$T$$里除去顶点$$i$$对应的那个角的另外两个角。
+
 将这两项合并，得到最终的Dirichlet能量：
 
 $$E(f) = \frac{1}{2} \sum_{(i,j) \in \mathcal{E}} \frac{1}{2} (\text{cot} \alpha_{ij} + \text{cot} \beta_{ij}) (f_i - f_j)^2$$
