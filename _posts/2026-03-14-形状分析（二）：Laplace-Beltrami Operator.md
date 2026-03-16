@@ -221,14 +221,6 @@ $$E(f) = \frac{1}{4} \sum_{(i,j) \in \mathcal{E}} (\text{cot} \alpha_{ij} + \tex
 
 首先，我们介绍一个常用的曲面积分结果。
 
-**散度定理**：对于曲面$$\mathcal{M}$$上任意的光滑向量场$$X$$，散度定理给出：
-
-$$\int_{\mathcal{M}} \text{div} (X) dA = \int_{\partial \mathcal{M}} X \cdot \nu ds$$
-
-其中$$\partial \mathcal{M}$$是$$\mathcal{M}$$的边界，$$\nu$$是边界上的外法向量（在曲面切平面内，垂直于边界，指向外侧），$$ds$$是边界上的弧长元素。如果$$\mathcal{M}$$是闭曲面（球面、环面，或者我们所要操作的watertight三维网格），没有边界，那么$$\partial \mathcal{M}$$是空集，自然有
-
-$$\int_{\mathcal{M}} \text{div} (X) dA = 0$$
-
 **Green第一恒等式**：对于曲面$$\mathcal{M}$$上定义的函数$$f, g$$，有如下结果成立：
 
 $$\int_{\mathcal{M}} (g \Delta f + \langle \nabla g, \nabla f \rangle) dA = \int_{\partial \mathcal{M}} g \nabla f ds$$
@@ -243,54 +235,39 @@ $$\int_{\mathcal{M}} g \Delta f  dA = -\int_{\mathcal{M}} \langle \nabla g, \nab
 
 现在令上述Green第一恒等式结果里的$$g$$为任意函数，$$f$$为我们所关注的函数$$f$$，从而可得：
 
-$$\int_{\mathcal{M}} \Delta f g  dA = -\int_{\mathcal{M}} \langle \nabla f, \nabla g \rangle dA$$
+$$\int_{\mathcal{M}} g \Delta f dA = -\int_{\mathcal{M}} \langle \nabla f, \nabla g \rangle dA$$
 
 我们先来计算等式右边。注意，根据之前的步骤，我们已经利用线性插值，在每个三角形内部的点也定义了$$f$$的函数值，可以对函数$$g$$也做类似线性插值，从而$$f,g$$都是分段线性函数，在每个三角形$$\triangle_{f_1f_2f_3}$$内：
 
-$$\nabla f = f_1 \nabla \lambda_1 + f_2 \lambda_2 + f_3 \lambda_3$$
+$$\nabla f = f_1 \nabla \lambda_1 + f_2 \nabla \lambda_2 + f_3 \nabla \lambda_3$$
 
-$$\nabla g = g_1 \nabla \lambda_1 + g_2 \lambda_2 + g_3 \lambda_3$$
+$$\nabla g = g_1 \nabla \lambda_1 + g_2 \nabla \lambda_2 + g_3 \nabla \lambda_3$$
 
 按照之前的结果，$$\nabla f$$和$$\nabla g$$三角形内部是常数值，因此$$\int_{T} \langle \nabla f, \nabla g \rangle = A_T \langle \nabla f, \nabla g \rangle$$，其中$$A_T$$是三角形$$T = \triangle_{f_1f_2f_3}$$的面积。
 
 展开内积$$A_T \langle \nabla f, \nabla g \rangle = A_T \sum_{i=1}^3 \sum_{j=1}^3 f_i g_j \langle \nabla \lambda_i, \nabla \lambda_j \rangle$$。类似于之前的计算过程：
 
-$$A_T \sum_{i=1}^3 \sum_{j=1}^3 f_i g_j \langle \nabla \lambda_i, \nabla \lambda_j \rangle = \frac{1}{4} \left[ \text{cot} \theta_1 (f_2 g_2 + f_3 g_3) + \text{cot} \theta_2 (f_1 g_1 + f_3 g_3) + \text{cot} \theta_3 (f_1 g_1 + f_2 g_2) \right]  - \frac{1}{4} \left[ \text{cot} \theta_1 (f_2 g_3 + f_3 g_2) + \text{cot} \theta_2 (f_1 g_3 + f_3 g_1) + \text{cot} \theta_3 (f_1 g_2 + f_2 g_1) \right] $$
+$$A_T \sum_{i=1}^3 \sum_{j=1}^3 f_i g_j \langle \nabla \lambda_i, \nabla \lambda_j \rangle = \frac{1}{2} \left[ \text{cot} \theta_1 (f_2 g_2 + f_3 g_3 - f_2 g_3 - f_3 g_2) + \text{cot} \theta_2 (f_1 g_1 + f_3 g_3 - f_1 g_3 1 f_3 g_1) + \text{cot} \theta_3 (f_1 g_1 + f_2 g_2 - f_1 g_2 1 f_2 g_1) \right]$$
 
+对所有的三角面片求和，既可得：
 
+$$\int_{\mathcal{M}} \langle \nabla f, \nabla g \rangle dA = \sum_{T \in \mathcal{F}} A_T \sum_{i=1}^3 \sum_{j=1}^3 f_i g_j \langle \nabla \lambda_i, \nabla \lambda_j \rangle = \sum_{(i,j) \in \mathcal{E}} (\text{cot} \theta_{\alpha_{ij}} + \text{cot} \theta_{\beta_{ij}}(f_ig_i + f_j g_j - f_ig_j - f_j g_i) = \sum_{(i,j) \in \mathcal{E}} (\text{cot} \theta_{\alpha_{ij}} + \text{cot} \theta_{\beta_{ij}}(f_i - f_j)(g_i - g_j)$$
 
-我们首先来计算$$E$$的$$L^2$$梯度。
+写成矩阵的形式，$$\boldsymbol{f}, \boldsymbol{g}$$分别是函数$$f,g$$在所有顶点上的值构成的向量，从而：
 
->什么叫$$E$$的$$L^2$$梯度？假设$$f$$是流形上的函数，考虑对$$f$$做一个微小扰动$$f \rightarrow f + \epsilon \phi$$，其中$$\phi$$是任意光滑的流形上的函数。$$E$$的一阶变分为：$$\mathop{\lim}\limits_{\epsilon \rightarrow 0} (E(f+\epsilon \phi) - E(f)) / \epsilon$$。如果存在某个函数$$g$$，使得对于任意的$$\phi$$，都有$$E$$的一阶变分等于$$\langle g, \phi \rangle_{L^2} = \int_{\mathcal{M}} g \phi dA$$，那么就称$$g$$是$$E$$在$$f$$处的$$L^2$$梯度，记作$$\text{grad}_{L^2}E(f) = g$$。
+$$\int_{\mathcal{M}} \langle \nabla f, \nabla g \rangle dA = \boldsymbol{f}^{\top}L \boldsymbol{g}$$
 
-依据$$E$$的定义，我们来计算它的一阶变分：
+下面再来计算上述Green第一恒等式推出的结果的左侧$$\int_{\mathcal{M}} g \Delta f dA$$。
 
-$$E(f + \epsilon \phi) = \frac{1}{2} \int_{\mathcal{M}} \lVert \nabla (f + \epsilon \phi) \rVert^2 dA = \frac{1}{2} \int_{\mathcal{M}} \langle \nabla f + \epsilon \nabla \phi, \nabla f + \epsilon \nabla \phi \rangle dA = \frac{1}{2} \int_{\mathcal{M}} \left[ \lVert \nabla f \rVert^2 + 2\epsilon \langle \nabla f, \nabla \phi \rangle + \epsilon^2 \lVert \nabla \phi \rVert^2 \right] dA$$
+对于每个三角形面片，我们同样使用线性插值，利用每个顶点处的函数值，计算三角形内部点的函数值。即对于三角形$$T = \triangle_{f_1f_2f_3}$$以及其内部一点$$v$$：
 
-根据一阶变分的定义
+$$\Delta f (v) = \lambda_1 \Delta f(v_1) + \lambda_2 \Delta f(v_2) + \lambda_3 \Delta f(v_3)$$
 
-$$\mathop{\lim}\limits_{\epsilon \rightarrow 0} \frac{E(f+\epsilon \phi) - E(f)}{\epsilon} = \int_{\mathcal{M}} \langle \nabla f, \nabla \phi \rangle dA$$
+$$g (v) = \lambda_1 g(v_1) + \lambda_2 g(v_2) + \lambda_3 g(v_3)$$
 
-由Green第一恒等式，可以得到：
+从而在每个三角形内部：
 
-$$\int_{\mathcal{M}} \langle \nabla f, \nabla \phi \rangle dA = - \int_{\mathcal{M}} (\text{div} (\nabla f)) \phi dA = \langle -\text{div}(\nabla f), \phi \rangle_{L^2}$$
-
->具体推导过程为：考虑向量场$$\phi \nabla f$$，利用Leibniz律，对其取散度，可以得到$$\text{div}(\phi \nabla f) = \langle \nabla \phi, \nabla f \rangle + \phi \text{div}(\nabla f)$$。对两边在$$\mathcal{M}$$上积分，左边由散度定理变为边界积分（因为$$\mathcal{M}$$无边界，所以为0）：$$0 = \int_{\mathcal{M}} \langle \nabla \phi, \nabla f \rangle dA + \int_{\mathcal{M}} \phi \text{div}(\nabla f) dA$$，即$$\int_{\mathcal{M}} \langle \nabla \phi, \nabla f \rangle dA = -\int_{\mathcal{M}} \phi \text{div}(\nabla f) dA = \langle -\text{div}(\nabla f), \phi \rangle_{L^2}$$。
-
-结合上面两个结论，可以得到：$$\text{grad}_{L^2}E(f) = -\text{div}(\nabla f), \phi \rangle_{L^2} = - \Delta_{\mathcal{M}} f$$，即**$$\Delta_{\mathcal{M}}f$$是函数$$f$$在流形$$\mathcal{M}$$上的Dirichlet能量的负$$L^2$$梯度**。
-
-
-
-
-
-
-
-
-
-
-
-
-
+$$\int_{T} g \Delta f dA = \int_0^1 \int_0^1 \int_0^1 (\lambda_1 g(v_1) + \lambda_2 g(v_2) + \lambda_3 g(v_3))(\lambda_1 \Delta f(v_1) + \lambda_2 \Delta f(v_2) + \lambda_3 \Delta f(v_3)) d\lambda_1 d\lambda_2 d\lambda_3$$
 
 
 
