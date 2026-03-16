@@ -305,11 +305,11 @@ $$M \boldsymbol{\Delta f} = -L\boldsymbol{f}$$
 
 根据上面的证明过程，如果严格按照每个三角形内进行线性插值的方式，计算离散Laplace-Beltrami算子作用于函数$$f$$的结果，得到的是一个稠密的面积矩阵$$M$$，结合cotangent矩阵$$L$$，结果为：
 
-$$M \boldsymbol{\Delta f} = -L\boldsymbol{f}$$
+$$M \Delta \boldsymbol{f} = -L\boldsymbol{f}$$
 
 或者
 
-$$M \boldsymbol{\Delta f} = -M^{-1} L\boldsymbol{f}$$
+$$\Delta \boldsymbol{f} = -M^{-1} L\boldsymbol{f}$$
 
 从而计算矩阵$$-M^{-1}L$$的特征值和特征向量，就可以得到该离散Laplace-Beltrami算子的特征方程在各个顶点上的值。
 
