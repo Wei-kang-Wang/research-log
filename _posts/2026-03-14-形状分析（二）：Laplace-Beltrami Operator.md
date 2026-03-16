@@ -153,7 +153,7 @@ $$\lambda_1 = \frac{A(f,f_2, f_3)}{A(f_1, f_2, f_3)}$$
 
 记$$A_T = A(f_1, f_2, f_3)$$。$$\lambda_1$$是关于$$f=(x,y,z)$$的函数
 
-$$\lambda_1(f) = \frac{A(f,f_2, f_3)}{A(f_1, f_2, f_3)} = \frac{\left[ (f - f_2) \times (f_3 - f_2) \right] \cdot \pmb{n}}{2A} = \frac{(f \times \pmb{e_{23}}) \cdot \pmb{n} - (f_2 \times \pmb{e_{23}}) \cdot \pmb{n}}{2A} = \frac{(\pmb{e_{23}} \times \pmb{n}) \cdot f - (f_2 \times \pmb{e_{23}}) \cdot \pmb{n}}{2A}$$
+$$\lambda_1(f) = \frac{A(f,f_2, f_3)}{A(f_1, f_2, f_3)} = \frac{\left[ (f - f_2) \times (f_3 - f_2) \right] \cdot \pmb{n}}{2A} = \frac{(f \times \boldsymbol{e_{23}}) \cdot \boldsymbol{n} - (f_2 \times \boldsymbol{e_{23}}) \cdot \boldsymbol{n}}{2A} = \frac{(\boldsymbol{e_{23}} \times \boldsymbol{n}) \cdot f - (f_2 \times \boldsymbol{e_{23}}) \cdot \boldsymbol{n}}{2A}$$
 
 其中$$\pmb{n}$$是垂直于三角形$$\triangle_{f_1f_2f_3}$$平面的单位法向量（三角形$$\triangle_{f_1f_2f_3}$$和三角形$$\triangle_{ff_2f_3}$$在同一个平面内）。
 
