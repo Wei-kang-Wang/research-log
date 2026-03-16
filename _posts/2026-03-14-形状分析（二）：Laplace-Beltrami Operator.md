@@ -179,7 +179,7 @@ $$
 
 第三步：推导cotangent权重
 
-考虑$$\langle \nabla \lambda_i, \nabla \lambda_j \rangle$$，$$i \neq j$$的计算结果。以$$\langle \nabla \lambda_1, \nabla \lambda_2 \rangle$$为例，假设顶点$$f_3$$处的角大小为$$\theta_3$$，$$\langle \nabla \lambda_1, \nabla \lambda_2 \rangle$$的物理意义是两个向量的内积，其模长分别为点$$f_1,f_2$$对应的高的倒数，夹角为$$\pi - \theta_3：
+考虑$$\langle \nabla \lambda_i, \nabla \lambda_j \rangle$$，$$i \neq j$$的计算，以$$\langle \nabla \lambda_1, \nabla \lambda_2 \rangle$$为例，假设顶点$$f_3$$处的角大小为$$\theta_3$$，$$\langle \nabla \lambda_1, \nabla \lambda_2 \rangle$$的物理意义是两个向量的内积，其模长分别为点$$f_1,f_2$$对应的高的倒数，夹角为$$\pi - \theta_3：
 
 $$\langle \nabla \lambda_1, \nabla \lambda_2 \rangle = \frac{1}{h_1h_2} \text{cos}(\pi - \theta_3)= -\frac{\text{cos}(\theta_3)}{h_1h_2}$$
 
@@ -187,7 +187,15 @@ $$\langle \nabla \lambda_1, \nabla \lambda_2 \rangle = \frac{1}{h_1h_2} \text{co
 
 第四步：组装三角网格所有三角形的Dirichlet能量
 
-注意，每条边$$(i,j)$$都恰好被两个三角形共享，假设其对面角分别为$$\alpha_{ij}, \beta_{ij}$$，所以总Dirichlet能量为：
+按照之前计算的每个三角形的Dirichlet能量为$$A \sum_{i,j=1,2,3} f_i f_j \langle \nabla \lambda_i, \nabla \lambda_j \rangle$$，将所有三角形的Dirichlet能量加和，即得到这个三角网格的总Dirichlet能量
+
+$$E(f) = \sum_{T \in \mathcal{F}} \sum_{i,j=1,2,3} f_i f_j A_{T} \langle \nabla \lambda_i, \nabla \lambda_j \rangle = \sum_{T \in \mathcal{F}} \sum_{i,j=1,2,3, i \neq j} f_i f_j A_{T} \langle \nabla \lambda_i, \nabla \lambda_j \rangle +  \sum_{T \in \mathcal{F}} \sum_{i=1,2,3} f_i f_i A_{T} \langle \nabla \lambda_i, \nabla \lambda_i \rangle$$
+
+注意，每条边$$(i,j)$$都恰好被两个三角形共享，假设其对面角分别为$$\alpha_{ij}, \beta_{ij}$$，那么上述式子最后结果的第一项为：
+
+$$E(f)_1 = \sum_{T \in \mathcal{F}} \sum_{i,j=1,2,3, i \neq j} f_i f_j A_{T} \langle \nabla \lambda_i, \nabla \lambda_j \rangle = -\frac{1}{2} \sum_{(i,j) \in \mathcal{E}} (\text{cot} \alpha_{ij} + \text{cot} \beta_{ij}) f_i f_j$$
+
+将这两项合并，得到最终的Dirichlet能量：
 
 $$E(f) = \frac{1}{2} \sum_{(i,j) \in \mathcal{E}} \frac{1}{2} (\text{cot} \alpha_{ij} + \text{cot} \beta_{ij}) (f_i - f_j)^2$$
 
