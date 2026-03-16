@@ -192,12 +192,7 @@ $$A_T f_1^2 \langle \nabla \lambda_1, \nabla \lambda_1 \rangle = \frac{1}{2}\lVe
 
 从而对于每个三角形$$\triangle_{f_1f_2f_3}$$：
 
-$$
-\begin{align}
-E_T &= \frac{1}{2} A_T \sum_{i=1}^3 f_i^2 \langle \nabla \lambda_i, \nabla \lambda_i \rangle + A_T \sum_{1 \leq i < j \leq 3} f_i f_j \langle \nabla \lambda_i, \nabla \lambda_j \rangle = \frac{1}{4} \sum_{i=1}^3 f_i^2 (\sum_{j=1, j \neq i}^3 \text{cot} \theta_j) - \frac{1}{2} \sum_{i=1}^3 \text{cot} \theta_i \Pi_{j=1, j \neq i} f_j \\
-&= \frac{1}{4} \sum_{i=1}^3 \text{cot} \theta_i (\sum_{j=1, j \neq i}^3 f_j^2)  - \frac{1}{2} \sum_{i=1}^3 \text{cot} \theta_i \Pi_{j=1, j \neq i} f_j 
-\end{align}
-$$
+$$E_T = \frac{1}{2} A_T \sum_{i=1}^3 f_i^2 \langle \nabla \lambda_i, \nabla \lambda_i \rangle + A_T \sum_{1 \leq i < j \leq 3} f_i f_j \langle \nabla \lambda_i, \nabla \lambda_j \rangle = \frac{1}{4} \sum_{i=1}^3 f_i^2 (\sum_{j=1, j \neq i}^3 \text{cot} \theta_j) - \frac{1}{2} \sum_{i=1}^3 \text{cot} \theta_i (\prod_{j=1, j \neq i} f_j) = \frac{1}{4} \sum_{i=1}^3 \text{cot} \theta_i (\sum_{j=1, j \neq i}^3 f_j^2)  - \frac{1}{2} \sum_{i=1}^3 \text{cot} \theta_i \Pi_{j=1, j \neq i} f_j$$
 
 
 **第四步：组装三角网格所有三角形的Dirichlet能量**
