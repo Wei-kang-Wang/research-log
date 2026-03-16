@@ -261,13 +261,13 @@ $$\int_{\mathcal{M}} \langle \nabla f, \nabla g \rangle dA = \boldsymbol{f}^{\to
 
 对于每个三角形面片，我们同样使用线性插值，利用每个顶点处的函数值，计算三角形内部点的函数值。即对于三角形$$T = \triangle_{f_1f_2f_3}$$以及其内部一点$$v$$：
 
-$$\Delta f (v) = \lambda_1 \Delta f(v_1) + \lambda_2 \Delta f(v_2) + \lambda_3 \Delta f(v_3)$$
+$$\Delta f (v) = \lambda_1 \Delta f_1 + \lambda_2 \Delta f_2 + \lambda_3 \Delta f_3$$
 
-$$g (v) = \lambda_1 g(v_1) + \lambda_2 g(v_2) + \lambda_3 g(v_3)$$
+$$g (v) = \lambda_1 g_1 + \lambda_2 g_2 + \lambda_3 g_3$$
 
 从而在每个三角形内部：
 
-$$\int_{T} g \Delta f dA = \int_0^1 \int_0^1 \int_0^1 (\lambda_1 g(v_1) + \lambda_2 g(v_2) + \lambda_3 g(v_3))(\lambda_1 \Delta f(v_1) + \lambda_2 \Delta f(v_2) + \lambda_3 \Delta f(v_3)) d\lambda_1 d\lambda_2 d\lambda_3$$
+$$\int_{T} g \Delta f dA = \int_0^1 \int_0^1 \int_0^1 (\lambda_1 g_1 + \lambda_2 g_2 + \lambda_3 g_3)(\lambda_1 \Delta f_1 + \lambda_2 \Delta f_2 + \lambda_3 \Delta f_3) d\lambda_1 d\lambda_2 d\lambda_3$$
 
 
 
