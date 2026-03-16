@@ -275,29 +275,29 @@ $$\int_{T} g \Delta f dA = 2A_T \int_0^1 \int_0^{1-\lambda_1} (\lambda_1 g_1 + \
 
 $$\int_{T} g \Delta f dA = \frac{A_T}{12} (\Delta f_1 \  \Delta f_2 \  \Delta f_3) \begin{pmatrix} 2 & 1 & 1 \\ 1 & 2 & 1 \\ 1 & 1 & 2 \\ \end{pmatrix} (g_1 \  g_2 \  g_3)^{\top} = (\Delta f_1 \  \Delta f_2 \  \Delta f_3) M_T (g_1 \  g_2 \  g_3)^{\top}$$
 
-其中$$M_T$$是依赖于三角形$$T$$的质量矩阵，大小为$$3 \times 3$$，可以将其拓展为大小为$$\lvert \mathcal{V} \rVert$$的矩阵（补零），从而：
+其中$$M_T$$是依赖于三角形$$T$$的质量矩阵，大小为$$3 \times 3$$，可以将其拓展为大小为$$\lvert \mathcal{V} \rvert$$的矩阵（补零），从而：
 
-$$\int_{T} g \Delta f dA = \boldsymbol{\Delta f}^{\top} M_T \boldsymbol{g}$$
+$$\int_{T} g \Delta f dA = \Delta \boldsymbol{ f}^{\top} M_T \boldsymbol{g}$$
 
-其中$$\boldsymbol{\Delta f}, \boldsymbol{g}$$是$$\Delta f, g$$在所有顶点上的函数值构成的向量。
+其中$$\Delta \boldsymbol{ f}, \boldsymbol{g}$$是$$\Delta f, g$$在所有顶点上的函数值构成的向量。
 
 对所有的三角形进行积分，即可得：
 
-$$\int_{\mathcal{M}} g \Delta f dA = \sum_{T \in \mathcal{F}} \int_{T} g \Delta f dA = \sum_{T \in \mathcal{F}} \boldsymbol{\Delta f}^{\top} M_T \boldsymbol{g} = \boldsymbol{\Delta f}^{\top} (\sum_{T \in \mathcal{F}} M_T) \boldsymbol{g}$$
+$$\int_{\mathcal{M}} g \Delta f dA = \sum_{T \in \mathcal{F}} \int_{T} g \Delta f dA = \sum_{T \in \mathcal{F}} \Delta \boldsymbol{ f}^{\top} M_T \boldsymbol{g} = \Delta \boldsymbol{ f}^{\top} (\sum_{T \in \mathcal{F}} M_T) \boldsymbol{g}$$
 
 记$$M = \sum_{T \in \mathcal{F}} M_T$$，那么M就是整个三角网格的面积矩阵。
 
 最后，比较上面Green第一恒等式左侧和右侧计算出来的结果，即可得：
 
-$$\boldsymbol{\Delta f}^{\top} M \boldsymbol{g} = \boldsymbol{f}^{\top} L \boldsymbol{g}$$
+$$\Delta \boldsymbol{ f}^{\top} M \boldsymbol{g} = \boldsymbol{f}^{\top} L \boldsymbol{g}$$
 
 上面的结果对任意的函数$$g$$都成立，从而：
 
-$$\boldsymbol{\Delta f}^{\top} M = -\boldsymbol{f}^{\top} L$$
+$$\Delta \boldsymbol{ f}^{\top} M = -\boldsymbol{f}^{\top} L$$
 
 或者：
 
-$$M \boldsymbol{\Delta f} = -L\boldsymbol{f}$$
+$$M \Delta \boldsymbol{ f} = -L\boldsymbol{f}$$
 
 因为根据构造$$M,L$$都是对称矩阵。
 
