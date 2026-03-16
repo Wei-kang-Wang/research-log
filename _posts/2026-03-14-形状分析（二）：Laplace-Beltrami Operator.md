@@ -170,7 +170,7 @@ $$\nabla \lambda_1 = \frac{\pmb{e_{23}} \times \pmb{n}}{2A}$$
 $$
 \begin{align}
 E_T &= \int_{T} \lVert \nabla f \rVert^2 dA = \int_{T} \lVert f_1 \nabla \lambda_1 + f_2 \nabla \lambda_2 + f_3 \nabla \lambda_3 \rVert^2 dA = A_T \lVert f_1 \nabla \lambda_1 + f_2 \nabla \lambda_2 + f_3 \nabla \lambda_3 \rVert^2 \\
-&= A_T \langle  f_1 \nabla \lambda_1 + f_2 \nabla \lambda_2 + f_3 \nabla \lambda_3, f_1 \nabla \lambda_1 + f_2 \nabla \lambda_2 + f_3 \nabla \lambda_3 \rangle = A_T \sum_{i=1}^3 f_i^2 \langle \nabla \lambda_i, \nabla \lambda_i \rangle + 2A_T \sum_{1 \leq i < j \leq 3} f_i f_j \langle \nabla \lambda_i, \nabla \lambda_j \rangle$$
+&= A_T \langle  f_1 \nabla \lambda_1 + f_2 \nabla \lambda_2 + f_3 \nabla \lambda_3, f_1 \nabla \lambda_1 + f_2 \nabla \lambda_2 + f_3 \nabla \lambda_3 \rangle = A_T \sum_{i=1}^3 f_i^2 \langle \nabla \lambda_i, \nabla \lambda_i \rangle + 2A_T \sum_{1 \leq i < j \leq 3} f_i f_j \langle \nabla \lambda_i, \nabla \lambda_j \rangle
 \end{align}
 $$
 
