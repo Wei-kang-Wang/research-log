@@ -190,6 +190,13 @@ $$A_T f_1^2 \langle \nabla \lambda_1, \nabla \lambda_1 \rangle = \frac{1}{2}\lVe
 
 ![2]({{ '/assets/images/laplace_beltrami_1.png' | relative_url }}){: width=100px style="float:center"}
 
+从而对于每个三角形$$\triangle_{f_1f_2f_3}$$：
+
+$$
+\begin{align}
+E_T &= \frac{1}{2} A_T \sum_{i=1}^3 f_i^2 \langle \nabla \lambda_i, \nabla \lambda_i \rangle + A_T \sum_{1 \leq i < j \leq 3} f_i f_j \langle \nabla \lambda_i, \nabla \lambda_j \rangle = \frac{1}{4} \sum_{i=1}^3 f_i^2 (\sum_{j=1, j \neq i}^3 \text{cot} \theta_j) - \frac{1}{2} \sum_{i=1}^3 \text{cot} \theta_i \Pi_{j=1, j \neq i} f_j \\
+&= \frac{1}{4} \sum_{i=1}^3 \text{cot} \theta_i (\sum_{j=1, j \neq i}^3 f_j^2)  - \frac{1}{2} \sum_{i=1}^3 \text{cot} \theta_i \Pi_{j=1, j \neq i} f_j $$
+
 
 **第四步：组装三角网格所有三角形的Dirichlet能量**
 
@@ -199,9 +206,9 @@ $$E(f) = \sum_{T \in \mathcal{F}} E_T = \frac{1}{2} \sum_{T \in \mathcal{F}} A_T
 
 注意，每条边$$(i,j)$$都恰好被两个三角形共享，假设其对面角分别为$$\alpha_{ij}, \beta_{ij}$$，那么上述式子第二项为：
 
-$$E(f)_2 = \sum_{T \in \mathcal{F}} 2A_T \sum_{1 \leq i < j \leq 3} f_i f_j \langle \nabla \lambda_i, \nabla \lambda_j \rangle = -\frac{1}{2} \sum_{(i,j) \in \mathcal{E}} (\text{cot} \alpha_{ij} + \text{cot} \beta_{ij}) f_i f_j$$
+$$E(f)_2 = \sum_{T \in \mathcal{F}} A_T \sum_{1 \leq i < j \leq 3} f_i f_j \langle \nabla \lambda_i, \nabla \lambda_j \rangle = -\frac{1}{2} \sum_{(i,j) \in \mathcal{E}} (\text{cot} \alpha_{ij} + \text{cot} \beta_{ij}) f_i f_j$$
 
-上述式子最后结果的第一项为：
+因为每个三角形的顶点都和其对面边一一对应，因此上述式子的第一项也可以用边的集合来表示，同样的每条边$$(i,j)$$都恰好被两个三角形共享：
 
 $$
 E(f)_1 = \frac{1}{2} \sum_{T \in \mathcal{F}} A_T \sum_{i=1}^3 f_i^2 \langle \nabla \lambda_i, \nabla \lambda_i \rangle = \sum_{T \in \mathcal{F}} \sum_{i=1,2,3} f_i^2 A_T \frac{1}{h_{i,T}^2} = \sum_{T \in \mathcal{F}} \sum_{i=1,2,3} f_i^2 \frac{e_{i,T} h_{i,T}}{2h_{i,T}^2} = \sum_{T \in \mathcal{F}} \sum_{i=1,2,3} f_i^2 \frac{e_{i,T}}{2h_{i,T}} = \sum_{T \in \mathcal{F}} \sum_{i=1,2,3} f_i^2 \frac{1}{2} (\text{cot} \theta_{i_1, T} + \text{cot} \theta_{i_2, T})
