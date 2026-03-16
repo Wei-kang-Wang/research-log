@@ -301,10 +301,35 @@ $$M \boldsymbol{\Delta f} = -L\boldsymbol{f}$$
 
 因为根据构造$$M,L$$都是对称矩阵。
 
+### 5. 面积矩阵的选择
+
+根据上面的证明过程，如果严格按照每个三角形内进行线性插值的方式，计算离散Laplace-Beltrami算子作用于函数$$f$$的结果，得到的是一个稠密的面积矩阵$$M$$，结合cotangent矩阵$$L$$，结果为：
+
+$$M \boldsymbol{\Delta f} = -L\boldsymbol{f}$$
+
+或者
+
+$$M \boldsymbol{\Delta f} = -M^{-1} L\boldsymbol{f}$$
+
+从而计算矩阵$$-M^{-1}L$$的特征值和特征向量，就可以得到该离散Laplace-Beltrami算子的特征方程在各个顶点上的值。
+
+但实际上，根据之前的结论，很多时候面积矩阵都是近似为一个对角矩阵，有如下几种近似方式：
+
+* 一致质量矩阵（Consistent Mass Matrix）：这是精确的有限元质量矩阵，非对角，每个三角形贡献$$\frac{A_T}{12}\begin{pmatrix} 2 & 1 & 1 \\ 1 & 2 & 1 \\ 1 & 1 & 2 \\ \end{pmatrix}$$。它来自标准有限元理论，可以追溯到Strang & Fix 1973年的教科书 *An Analysis of the Finite Element Method*
+* Barycentric面积（Row-sum lumping）：$$M_i = \frac{1}{3} \sum_{i \in T} A_T$$，即对于每个顶点$$i$$，其面积等于含有该顶点的所有三角形面积和的$$1/3$$。这等价于对一致质量矩阵做行求和（row lumping）。这是最简单的对角化方案，barycentric dual mesh 给出的面积恰好等于一致质量矩阵的行求和。文献中通常追溯到 Hinton, Rock & Zienkiewicz 1976 年的文章*A note on mass lumping and related processes in the finite element method*，该文系统讨论了 lumping 技术。
+* Voronoi 面积：在每个非钝角三角形内，连接外接圆心到三条边的中点，将三角形分成三个区域，每个区域分配给最近的顶点。对于非钝角三角形，顶点的Voronoi区域面积可以用对边的cotangent权重表示。这个方案来自 Meyer et al. 2003 年的论文*Discrete Differential-Geometry Operators for Triangulated 2-Manifolds*，他们介绍了使用 Voronoi cells 和混合有限元/有限体积方法来推导离散微分几何算子。
+* Mixed Voronoi 面积：纯 Voronoi 面积在钝角三角形时有问题：外接圆心落在三角形外部，导致 Voronoi 区域不合理。Meyer et al. 2003 年的论文*Discrete Differential-Geometry Operators for Triangulated 2-Manifolds*提出了 mixed area 的修正方案，对非钝角三角形用 Voronoi 面积，对钝角三角形用其他策略（将钝角对面的中点代替外接圆心）。这是实际应用中最常用的方案，```libigl``` 中 ```MASSMATRIX_TYPE_VORONOI``` 实现的就是这个版本。
+
+> Alec Jacobson在```https://alecjacobson.com/weblog/4666.html```提出了一种从混合有限元角度理解 mass lumping 的方式：用分段线性基函数离散位移，用定义在对偶网格（dual mesh）上的分段常数基函数离散速度。选择 Voronoi dual mesh 就自然得到 Voronoi 面积作为对角质量矩阵的元素，选择 barycentric dual mesh 就得到 barycentric 面积。这为不同的面积选择提供了统一的理论框架。
 
 
+之所以对面积矩阵进行这样的近似，有如下几个原因：
 
+* 求解效率：对角矩阵的逆就是逐元素取倒数。稠密矩阵的逆计算代价很大。但由于现在的算法提升和硬件提升，对于特征函数计算，这个优势其实不大。
+* 逐顶点的局部公式：对角矩阵使得$$(\Delta f)_i = \frac{1}{M_i} (L \boldsymbol{f})_i$$，每个顶点的Laplacian-Beltrami算子计算后的函数的值只依赖于自身一环邻域的信息。这在很多应用中非常方便，比如曲率估计（$$\Delta \boldsymbol{p} = -2H \boldsymbol{n}$$，可以逐点计算）、Laplacian smoothing（逐顶点迭代更新）、以及任何需要局部计算$$\Delta f$$的场景。用稠密的面积矩阵，$$(\Delta f))_i$$依赖所有顶点的值，失去了局部性。
+* 历史和惯例：cotangent Laplacian 在图形学中的广泛使用始于 Pinkall & Polthier (1993) 和 Meyer et al. (2003)，这些工作的重点是曲率估计和曲面流，需要的是逐顶点的局部公式，不是全局特征值问题。对角质量矩阵在这些场景下足够好，后续的大量工作沿用了这个惯例。
 
+但对于特征函数计算，用完整的面积矩阵确实是更好的选择。广义特征值问题$$L\phi = \lambda M \phi$$中，稀疏的非对角矩阵$$M$$和系数的$$L$$在计算上几乎没有额外困难，而精度更高。
 
 
 
