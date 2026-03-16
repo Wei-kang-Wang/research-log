@@ -217,7 +217,47 @@ $$E(f) = \frac{1}{4} \sum_{(i,j) \in \mathcal{E}} (\text{cot} \alpha_{ij} + \tex
 
 将其写成矩阵形式，即$$E(f) = \frac{1}{2} \boldsymbol{f}^{\top}L \boldsymbol{f}$$，其中$$\boldsymbol{f}$$是所有顶点的函数值构成的向量，$$L$$就是之前定义的cotangent矩阵。
 
-第五步：
+**第五步：计算离散Laplace-Beltrami算子作用在离散三角网格上定义的函数$$f$$的结果**
+
+首先，我们介绍一个常用的曲面积分结果。
+
+**散度定理**：对于曲面$$\mathcal{M}$$上任意的光滑向量场$$X$$，散度定理给出：
+
+$$\int_{\mathcal{M}} \text{div} (X) dA = \int_{\partial \mathcal{M}} X \cdot \nu ds$$
+
+其中$$\partial \mathcal{M}$$是$$\mathcal{M}$$的边界，$$\nu$$是边界上的外法向量（在曲面切平面内，垂直于边界，指向外侧），$$ds$$是边界上的弧长元素。如果$$\mathcal{M}$$是闭曲面（球面、环面，或者我们所要操作的watertight三维网格），没有边界，那么$$\partial \mathcal{M}$$是空集，自然有
+
+$$\int_{\mathcal{M}} \text{div} (X) dA = 0$$
+
+**Green第一恒等式**：对于曲面$$\mathcal{M}$$上定义的函数$$f, g$$，有如下结果成立：
+
+$$\int_{\mathcal{M}} (g \Delta f + \langle \nabla g, \nabla f \rangle) dA = \int_{\partial \mathcal{M}} g \nabla f ds$$
+
+如果$$\mathcal{M}$$是闭曲面，没有边界，那么$$\partial \mathcal{M}$$是空集，自然有：
+
+$$\int_{\mathcal{M}} (g \Delta f + \langle \nabla g, \nabla f \rangle) dA = 0$$
+
+即：
+
+$$\int_{\mathcal{M}} g \Delta f  dA = -\int_{\mathcal{M}} \langle \nabla g, \nabla f \rangle dA$$
+
+现在令上述Green第一恒等式结果里的$$g$$为任意函数，$$f$$为我们所关注的函数$$f$$，从而可得：
+
+$$\int_{\mathcal{M}} \Delta f g  dA = -\int_{\mathcal{M}} \langle \nabla f, \nabla g \rangle dA$$
+
+我们先来计算等式右边。注意，根据之前的步骤，我们已经利用线性插值，在每个三角形内部的点也定义了$$f$$的函数值，可以对函数$$g$$也做类似线性插值，从而$$f,g$$都是分段线性函数，在每个三角形$$\triangle_{f_1f_2f_3}$$内：
+
+$$\nabla f = f_1 \nabla \lambda_1 + f_2 \lambda_2 + f_3 \lambda_3$$
+
+$$\nabla g = g_1 \nabla \lambda_1 + g_2 \lambda_2 + g_3 \lambda_3$$
+
+按照之前的结果，$$\nabla f$$和$$\nabla g$$三角形内部是常数值，因此$$\int_{T} \langle \nabla f, \nabla g \rangle = A_T \langle \nabla f, \nabla g \rangle$$，其中$$A_T$$是三角形$$T = \triangle_{f_1f_2f_3}$$的面积。
+
+展开内积$$A_T \langle \nabla f, \nabla g \rangle = A_T \sum_{i=1}^3 \sum_{j=1}^3 f_i g_j \langle \nabla \lambda_i, \nabla \lambda_j \rangle$$。类似于之前的计算过程：
+
+$$A_T \sum_{i=1}^3 \sum_{j=1}^3 f_i g_j \langle \nabla \lambda_i, \nabla \lambda_j \rangle = \frac{1}{4} \left[ \text{cot} \theta_1 (f_2 g_2 + f_3 g_3) + \text{cot} \theta_2 (f_1 g_1 + f_3 g_3) + \text{cot} \theta_3 (f_1 g_1 + f_2 g_2) \right]  - \frac{1}{4} \left[ \text{cot} \theta_1 (f_2 g_3 + f_3 g_2) + \text{cot} \theta_2 (f_1 g_3 + f_3 g_1) + \text{cot} \theta_3 (f_1 g_2 + f_2 g_1) \right] $$
+
+
 
 我们首先来计算$$E$$的$$L^2$$梯度。
 
