@@ -180,9 +180,9 @@ $$
 
 考虑$$\langle \nabla \lambda_i, \nabla \lambda_j \rangle$$，$$i \neq j$$的计算，以$$\langle \nabla \lambda_1, \nabla \lambda_2 \rangle$$为例，假设顶点$$f_3$$处的角大小为$$\theta_3$$，$$\langle \nabla \lambda_1, \nabla \lambda_2 \rangle$$的物理意义是两个向量的内积，其模长分别为点$$f_1,f_2$$对应的高的倒数，夹角为$$\pi - \theta_3$$：
 
-$$\langle \nabla \lambda_1, \nabla \lambda_2 \rangle = \frac{1}{h_1h_2} \text{cos}(\pi - \theta_3)= -\frac{\text{cos}(\theta_3)}{h_1h_2}$$
+$$\langle \nabla \lambda_1, \nabla \lambda_2 \rangle = \frac{1}{h_1h_2} \text{cos}(\pi - \theta_3)= -\frac{\text{cos}\theta_3}{h_1h_2}$$
 
-而$$A_T = \frac{1}{2}\lVert \boldsymbol{e_{31}} \rVert \lVert \boldsymbol{e_{23}} \rVert \text{sin}(\theta_3)$$，且$$h_1 = 2A_T / \lVert \boldsymbol{e_{23}} \rVert, h_2 = 2A_T / \lVert \boldsymbol{e_{31}} \rVert$$，从而最终可以得到：$$A_T \langle \nabla \lambda_1, \nabla \lambda_2 \rangle = -\frac{1}{2} \text{cot} (\theta_3)$$，如下图左侧所示。
+而$$A_T = \frac{1}{2}\lVert \boldsymbol{e_{31}} \rVert \lVert \boldsymbol{e_{23}} \rVert \text{sin}(\theta_3)$$，且$$h_1 = 2A_T / \lVert \boldsymbol{e_{23}} \rVert, h_2 = 2A_T / \lVert \boldsymbol{e_{31}} \rVert$$，从而最终可以得到：$$A_T \langle \nabla \lambda_1, \nabla \lambda_2 \rangle = -\frac{1}{2} \text{cot} \theta_3$$，如下图左侧所示。
 
 考虑$$A_T f_i^2 \langle \nabla \lambda_i, \nabla \lambda_i \rangle$$，$$i \in \lbrace 1,2,3 \rbrace$$的计算，以$$A_T f_1^2 \langle \nabla \lambda_1, \nabla \lambda_1 \rangle$$为例，假设顶点$$f_2, f_3$$处角的大小分别为$$\theta_2, \theta_3$$。从而如下图右侧所示：
 
@@ -215,7 +215,7 @@ $$E(f)_2 =  - \frac{1}{2} \sum_{T \in \mathcal{F}} \sum_{i=1}^3 \text{cot} \thet
 
 $$E(f) = \frac{1}{4} \sum_{(i,j) \in \mathcal{E}} (\text{cot} \alpha_{ij} + \text{cot} \beta_{ij}) (f_i - f_j)^2$$
 
-将其写成矩阵形式，即$$E(f) = \frac{1}{2} \pmb{f}^{\top}L \pmb{f}$$，其中$$\pmb{f}$$是所有顶点的函数值构成的向量，$$L$$就是之前定义的cotangent矩阵。
+将其写成矩阵形式，即$$E(f) = \frac{1}{2} \boldsymbol{f}^{\top}L \boldsymbol{f}$$，其中$$\boldsymbol{f}$$是所有顶点的函数值构成的向量，$$L$$就是之前定义的cotangent矩阵。
 
 第五步：
 
