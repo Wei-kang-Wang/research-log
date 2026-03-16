@@ -247,11 +247,11 @@ $$\nabla g = g_1 \nabla \lambda_1 + g_2 \nabla \lambda_2 + g_3 \nabla \lambda_3$
 
 展开内积$$A_T \langle \nabla f, \nabla g \rangle = A_T \sum_{i=1}^3 \sum_{j=1}^3 f_i g_j \langle \nabla \lambda_i, \nabla \lambda_j \rangle$$。类似于之前的计算过程：
 
-$$A_T \sum_{i=1}^3 \sum_{j=1}^3 f_i g_j \langle \nabla \lambda_i, \nabla \lambda_j \rangle = \frac{1}{2} \left[ \text{cot} \theta_1 (f_2 g_2 + f_3 g_3 - f_2 g_3 - f_3 g_2) + \text{cot} \theta_2 (f_1 g_1 + f_3 g_3 - f_1 g_3 1 f_3 g_1) + \text{cot} \theta_3 (f_1 g_1 + f_2 g_2 - f_1 g_2 1 f_2 g_1) \right]$$
+$$A_T \sum_{i=1}^3 \sum_{j=1}^3 f_i g_j \langle \nabla \lambda_i, \nabla \lambda_j \rangle = \frac{1}{2} \left[ \text{cot} \theta_1 (f_2 g_2 + f_3 g_3 - f_2 g_3 - f_3 g_2) + \text{cot} \theta_2 (f_1 g_1 + f_3 g_3 - f_1 g_3 - f_3 g_1) + \text{cot} \theta_3 (f_1 g_1 + f_2 g_2 - f_1 g_2 - f_2 g_1) \right]$$
 
 对所有的三角面片求和，既可得：
 
-$$\int_{\mathcal{M}} \langle \nabla f, \nabla g \rangle dA = \sum_{T \in \mathcal{F}} A_T \sum_{i=1}^3 \sum_{j=1}^3 f_i g_j \langle \nabla \lambda_i, \nabla \lambda_j \rangle = \sum_{(i,j) \in \mathcal{E}} (\text{cot} \theta_{\alpha_{ij}} + \text{cot} \theta_{\beta_{ij}}(f_ig_i + f_j g_j - f_ig_j - f_j g_i) = \sum_{(i,j) \in \mathcal{E}} (\text{cot} \theta_{\alpha_{ij}} + \text{cot} \theta_{\beta_{ij}}(f_i - f_j)(g_i - g_j)$$
+$$\int_{\mathcal{M}} \langle \nabla f, \nabla g \rangle dA = \sum_{T \in \mathcal{F}} A_T \sum_{i=1}^3 \sum_{j=1}^3 f_i g_j \langle \nabla \lambda_i, \nabla \lambda_j \rangle = \sum_{(i,j) \in \mathcal{E}} (\text{cot} \theta_{\alpha_{ij}} + \text{cot} \theta_{\beta_{ij}}(f_ig_i + f_j g_j - f_ig_j - f_j g_i) = \sum_{(i,j) \in \mathcal{E}} (\text{cot} \theta_{\alpha_{ij}} + \text{cot} \theta_{\beta_{ij}})(f_i - f_j)(g_i - g_j)$$
 
 写成矩阵的形式，$$\boldsymbol{f}, \boldsymbol{g}$$分别是函数$$f,g$$在所有顶点上的值构成的向量，从而：
 
