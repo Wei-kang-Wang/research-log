@@ -180,7 +180,7 @@ $$
 
 $$\langle \nabla \lambda_1, \nabla \lambda_2 \rangle = \frac{1}{h_1h_2} \text{cos}(\pi - \theta_3)= -\frac{\text{cos}(\theta_3)}{h_1h_2}$$
 
-而$$A_T = \frac{1}{2}\lVert \boldsymbol{e_{31}} \rVert \lvert \boldsymbol{e_{23}} \rvert \text{sin}(\theta_3)$$，且$$h_1 = 2A_T / \lVert \boldsymbol{e_{23}} \rVert, h_2 = 2A_T / \lVert \boldsymbol{e_{31}} \rVert$$，从而最终可以得到：$$A_T \langle \nabla \lambda_1, \nabla \lambda_2 \rangle = -\frac{1}{2} \text{cot} (\theta_3)$$。
+而$$A_T = \frac{1}{2}\lVert \boldsymbol{e_{31}} \rVert \lVert \boldsymbol{e_{23}} \rVert \text{sin}(\theta_3)$$，且$$h_1 = 2A_T / \lVert \boldsymbol{e_{23}} \rVert, h_2 = 2A_T / \lVert \boldsymbol{e_{31}} \rVert$$，从而最终可以得到：$$A_T \langle \nabla \lambda_1, \nabla \lambda_2 \rangle = -\frac{1}{2} \text{cot} (\theta_3)$$。
 
 考虑$$A_T f_i^2 \langle \nabla \lambda_i, \nabla \lambda_i \rangle$$，$$i \in \lbrace 1,2,3 \rbrace$$的计算，以$$A_T f_1^2 \langle \nabla \lambda_1, \nabla \lambda_1 \rangle$$为例，假设顶点$$f_2, f_3$$处角的大小分别为$$\theta_2, \theta_3$$。从而：
 
