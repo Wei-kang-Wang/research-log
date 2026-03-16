@@ -174,9 +174,9 @@ E_T &= \int_{T} \lVert \nabla f \rVert^2 dA = \int_{T} \lVert f_1 \nabla \lambda
 \end{align}
 $$
 
-第三步：推导cotangent权重
+**第三步：推导cotangent权重**
 
-考虑$$\langle \nabla \lambda_i, \nabla \lambda_j \rangle$$，$$i \neq j$$的计算，以$$\langle \nabla \lambda_1, \nabla \lambda_2 \rangle$$为例，假设顶点$$f_3$$处的角大小为$$\theta_3$$，$$\langle \nabla \lambda_1, \nabla \lambda_2 \rangle$$的物理意义是两个向量的内积，其模长分别为点$$f_1,f_2$$对应的高的倒数，夹角为$$\pi - \theta_3：
+考虑$$\langle \nabla \lambda_i, \nabla \lambda_j \rangle$$，$$i \neq j$$的计算，以$$\langle \nabla \lambda_1, \nabla \lambda_2 \rangle$$为例，假设顶点$$f_3$$处的角大小为$$\theta_3$$，$$\langle \nabla \lambda_1, \nabla \lambda_2 \rangle$$的物理意义是两个向量的内积，其模长分别为点$$f_1,f_2$$对应的高的倒数，夹角为$$\pi - \theta_3$$：
 
 $$\langle \nabla \lambda_1, \nabla \lambda_2 \rangle = \frac{1}{h_1h_2} \text{cos}(\pi - \theta_3)= -\frac{\text{cos}(\theta_3)}{h_1h_2}$$
 
