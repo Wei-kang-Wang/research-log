@@ -180,7 +180,11 @@ $$
 
 $$\langle \nabla \lambda_1, \nabla \lambda_2 \rangle = \frac{1}{h_1h_2} \text{cos}(\pi - \theta_3)= -\frac{\text{cos}(\theta_3)}{h_1h_2}$$
 
-而$$A = \frac{1}{2}\lvert e_{31} \rvert \lvert e_{23} \rvert \text{sin}(\theta_3)$$，且$$h_1 = 2A / \lvert e_{23} \rvert, h_2 = 2A / \lvert e_{31} \rvert$$，从而最终可以得到：$$A \langle \nabla \lambda_1, \nabla \lambda_2 \rangle = -\frac{1}{2} \text{cot} (\theta_3)$$。推广可得，边$$(i,j)$$对应的Dirichlet能量为$$-\frac{1}{2} \text{cot} (\theta_{\text{opposite}})$$，其中$$\theta_{\text{opposite}}$$表示边$$(i,j)$$在三角形中对应的角。
+而$$A_T = \frac{1}{2}\lvert \pmb{e_{31}} \rvert \lvert \pmb{e_{23}} \rvert \text{sin}(\theta_3)$$，且$$h_1 = 2A_T / \lvert \pmb{e_{23}} \rvert, h_2 = 2A_T / \lvert \pmb{e_{31}} \rvert$$，从而最终可以得到：$$A_T \langle \nabla \lambda_1, \nabla \lambda_2 \rangle = -\frac{1}{2} \text{cot} (\theta_3)$$。
+
+考虑$$A_T f_i^2 \langle \nabla \lambda_i, \nabla \lambda_i \rangle$$，$$i \neq j$$的计算，以$$A_T f_1^2 \langle \nabla \lambda_1, \nabla \lambda_1 \rangle$$为例，假设顶点$$f_2, f_3$$处角的大小分别为$$\theta_2, \theta_3$$。从而：
+
+$$A_T f_1^2 \langle \nabla \lambda_1, \nabla \lambda_1 \rangle = \frac{1}{2}\lVert \pmb{e_{23}} \rVert h_1 f_1^2 \frac{1}{h_1^2} = f_1^2 \frac{\lVert \pmb{e_{23}} \rVert}{2h_1} = f_1^2 \frac{e_{23}^{'} + e_{23}^{''}}{2h_1} = \frac{f_1^2}{2} (\text{cot} \theta_2 + \text{cot} \theta_3)$$
 
 第四步：组装三角网格所有三角形的Dirichlet能量
 
