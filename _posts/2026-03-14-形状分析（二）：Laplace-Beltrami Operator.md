@@ -172,7 +172,8 @@ $$\nabla \lambda_1 = \frac{e_{23} \times \pmb{n}}{2A}$$
 $$
 \begin{align}
 E_T &= \int_{T} \lVert \nabla f \rVert^2 dA = A \lVert \nabla f \rVert^2 = A \lVert f_1 \nabla \lambda_1 + f_2 \nabla \lambda_2 + f_3 \nabla \lambda_3 \rVert^2 \\
-&= A \langle  f_1 \nabla \lambda_1 + f_2 \nabla \lambda_2 + f_3 \nabla \lambda_3, f_1 \nabla \lambda_1 + f_2 \nabla \lambda_2 + f_3 \nabla \lambda_3 \rangle = A \sum_{i,j=1,2,3} f_i f_j \langle \nabla \lambda_i, \nabla \lambda_j \rangle
+&= A \langle  f_1 \nabla \lambda_1 + f_2 \nabla \lambda_2 + f_3 \nabla \lambda_3, f_1 \nabla \lambda_1 + f_2 \nabla \lambda_2 + f_3 \nabla \lambda_3 \rangle \\
+&= A \sum_{i,j=1,2,3} f_i f_j \langle \nabla \lambda_i, \nabla \lambda_j \rangle
 \end{align}
 $$
 
