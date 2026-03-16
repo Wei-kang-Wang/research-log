@@ -285,7 +285,7 @@ $$\int_{T} g \Delta f dA = \Delta \boldsymbol{ f}^{\top} M_T \boldsymbol{g}$$
 
 $$\int_{\mathcal{M}} g \Delta f dA = \sum_{T \in \mathcal{F}} \int_{T} g \Delta f dA = \sum_{T \in \mathcal{F}} \Delta \boldsymbol{ f}^{\top} M_T \boldsymbol{g} = \Delta \boldsymbol{ f}^{\top} (\sum_{T \in \mathcal{F}} M_T) \boldsymbol{g}$$
 
-记$$M = \sum_{T \in \mathcal{F}} M_T$$，那么$$M$$就是整个三角网格的面积矩阵。
+记$$M = \sum_{T \in \mathcal{F}} M_T$$，那么$$M$$就是整个三角网格的质量矩阵。
 
 最后，比较上面Green第一恒等式左侧和右侧计算出来的结果，即可得：
 
@@ -301,9 +301,9 @@ $$M \Delta \boldsymbol{ f} = -L\boldsymbol{f}$$
 
 因为根据构造$$M,L$$都是对称矩阵。
 
-### 5. 面积矩阵的选择
+### 5. 质量矩阵的选择
 
-根据上面的证明过程，如果严格按照每个三角形内进行线性插值的方式，计算离散Laplace-Beltrami算子作用于函数$$f$$的结果，得到的是一个稠密的面积矩阵$$M$$，结合cotangent矩阵$$L$$，结果为：
+根据上面的证明过程，如果严格按照每个三角形内进行线性插值的方式，计算离散Laplace-Beltrami算子作用于函数$$f$$的结果，得到的是一个稠密的质量矩阵$$M$$，结合cotangent矩阵$$L$$，结果为：
 
 $$M \Delta \boldsymbol{f} = -L\boldsymbol{f}$$
 
@@ -323,13 +323,13 @@ $$\Delta \boldsymbol{f} = -M^{-1} L\boldsymbol{f}$$
 > Alec Jacobson在```https://alecjacobson.com/weblog/4666.html```提出了一种从混合有限元角度理解 mass lumping 的方式：用分段线性基函数离散位移，用定义在对偶网格（dual mesh）上的分段常数基函数离散速度。选择 Voronoi dual mesh 就自然得到 Voronoi 面积作为对角质量矩阵的元素，选择 barycentric dual mesh 就得到 barycentric 面积。这为不同的面积选择提供了统一的理论框架。
 
 
-之所以对面积矩阵进行这样的近似，有如下几个原因：
+之所以对质量矩阵进行这样的近似，有如下几个原因：
 
 * 求解效率：对角矩阵的逆就是逐元素取倒数。稠密矩阵的逆计算代价很大。但由于现在的算法提升和硬件提升，对于特征函数计算，这个优势其实不大。
 * 逐顶点的局部公式：对角矩阵使得$$(\Delta f)_i = \frac{1}{M_i} (L \boldsymbol{f})_i$$，每个顶点的Laplacian-Beltrami算子计算后的函数的值只依赖于自身一环邻域的信息。这在很多应用中非常方便，比如曲率估计（$$\Delta \boldsymbol{p} = -2H \boldsymbol{n}$$，可以逐点计算）、Laplacian smoothing（逐顶点迭代更新）、以及任何需要局部计算$$\Delta f$$的场景。用稠密的面积矩阵，$$(\Delta f))_i$$依赖所有顶点的值，失去了局部性。
 * 历史和惯例：cotangent Laplacian 在图形学中的广泛使用始于 Pinkall & Polthier (1993) 和 Meyer et al. (2003)，这些工作的重点是曲率估计和曲面流，需要的是逐顶点的局部公式，不是全局特征值问题。对角质量矩阵在这些场景下足够好，后续的大量工作沿用了这个惯例。
 
-但对于特征函数计算，用完整的面积矩阵确实是更好的选择。广义特征值问题$$L\phi = \lambda M \phi$$中，稀疏的非对角矩阵$$M$$和系数的$$L$$在计算上几乎没有额外困难，而精度更高。
+但对于特征函数计算，用完整的质量矩阵确实是更好的选择。广义特征值问题$$L\phi = \lambda M \phi$$中，稀疏的非对角矩阵$$M$$和系数的$$L$$在计算上几乎没有额外困难，而精度更高。
 
 
 
