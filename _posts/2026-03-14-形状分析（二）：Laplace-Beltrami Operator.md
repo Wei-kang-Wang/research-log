@@ -155,13 +155,13 @@ $$\lambda_1 = \frac{A(f,f_2, f_3)}{A(f_1, f_2, f_3)}$$
 
 $$\lambda_1(f) = \frac{A(f,f_2, f_3)}{A(f_1, f_2, f_3)} = \frac{\left[ (f - f_2) \times (f_3 - f_2) \right] \cdot \pmb{n}}{2A} = \frac{(f \times \boldsymbol{e_{23}}) \cdot \boldsymbol{n} - (f_2 \times \boldsymbol{e_{23}}) \cdot \boldsymbol{n}}{2A} = \frac{(\boldsymbol{e_{23}} \times \boldsymbol{n}) \cdot f - (f_2 \times \boldsymbol{e_{23}}) \cdot \boldsymbol{n}}{2A}$$
 
-其中$$\pmb{n}$$是垂直于三角形$$\triangle_{f_1f_2f_3}$$平面的单位法向量（三角形$$\triangle_{f_1f_2f_3}$$和三角形$$\triangle_{ff_2f_3}$$在同一个平面内）。
+其中$$\boldsymbol{e_{23}}$$是由点$$f_2$$指向$$f_3$$的向量，$$\boldsymbol{n}$$是垂直于三角形$$\triangle_{f_1f_2f_3}$$平面的单位法向量（三角形$$\triangle_{f_1f_2f_3}$$和三角形$$\triangle_{ff_2f_3}$$在同一个平面内）。
 
 从而$$\nabla \lambda_1(f)$$对$$f=(x,y,z)$$的梯度为：
 
-$$\nabla \lambda_1 = \frac{\pmb{e_{23}} \times \pmb{n}}{2A}$$
+$$\nabla \lambda_1 = \frac{\boldsymbol{e_{23}} \times \boldsymbol{n}}{2A_T}$$
 
-类似的，$$\nabla \lambda_2 = \frac{\pmb{e_{31}} \times \pmb{n}}{2A}, \nabla \lambda_3 = \frac{\pmb{e_{12}} \times \pmb{n}}{2A}$$
+类似的，$$\nabla \lambda_2 = \frac{\boldsymbol{e_{31}} \times \boldsymbol{n}}{2A_T}, \nabla \lambda_3 = \frac{\boldsymbol{e_{12}} \times \boldsymbol{n}}{2A_T}$$
 
 **第二步：计算每个三角形$$T$$面上的Dirichlet能量**
 
@@ -180,7 +180,7 @@ $$
 
 $$\langle \nabla \lambda_1, \nabla \lambda_2 \rangle = \frac{1}{h_1h_2} \text{cos}(\pi - \theta_3)= -\frac{\text{cos}(\theta_3)}{h_1h_2}$$
 
-而$$A_T = \frac{1}{2}\lvert \pmb{e_{31}} \rvert \lvert \pmb{e_{23}} \rvert \text{sin}(\theta_3)$$，且$$h_1 = 2A_T / \lvert \pmb{e_{23}} \rvert, h_2 = 2A_T / \lvert \pmb{e_{31}} \rvert$$，从而最终可以得到：$$A_T \langle \nabla \lambda_1, \nabla \lambda_2 \rangle = -\frac{1}{2} \text{cot} (\theta_3)$$。
+而$$A_T = \frac{1}{2}\lVert \boldsymbol{e_{31}} \rVert \lvert \boldsymbol{e_{23}} \rvert \text{sin}(\theta_3)$$，且$$h_1 = 2A_T / \lVert \boldsymbol{e_{23}} \rVert, h_2 = 2A_T / \lVert \boldsymbol{e_{31}} \rVert$$，从而最终可以得到：$$A_T \langle \nabla \lambda_1, \nabla \lambda_2 \rangle = -\frac{1}{2} \text{cot} (\theta_3)$$。
 
 考虑$$A_T f_i^2 \langle \nabla \lambda_i, \nabla \lambda_i \rangle$$，$$i \neq j$$的计算，以$$A_T f_1^2 \langle \nabla \lambda_1, \nabla \lambda_1 \rangle$$为例，假设顶点$$f_2, f_3$$处角的大小分别为$$\theta_2, \theta_3$$。从而：
 
