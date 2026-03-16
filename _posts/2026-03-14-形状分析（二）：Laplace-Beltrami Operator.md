@@ -104,9 +104,11 @@ $$M = \text{diag}(A_1, A_2, \cdots, A_V)$$
 
 ### 4. 一些证明
 
-下面我们来证明定理一。cotangent Laplacian的推导方式有多种途径，最常用的是利用有限元方法，从Dirichlet能量的变分出发。对于流形$$\mathcal{M}$$上的函数$$f$$，其Dirichlet能量定义为：$$E(f) = \frac{1}{2}\int_{\mathcal{M}} \lVert \nabla f \rVert^2 dA$$。
+下面我们来证明定理一。cotangent Laplacian的推导方式有多种途径，最常用的是利用有限元方法，从Dirichlet能量的变分出发。对于流形$$\mathcal{M}$$上的函数$$f$$，其Dirichlet能量定义为：
 
-第一步：在三角网格$$\mathcal{M}$$的每个三角形内部计算梯度
+$$E(f) = \frac{1}{2}\int_{\mathcal{M}} \lVert \nabla f \rVert^2 dA$$
+
+**第一步：在三角网格$$\mathcal{M}$$的每个三角形内部计算梯度**
 
 定义在$$\mathcal{M}$$上的函数$$f$$在每个顶点$$i$$的取值为$$f_i$$，我们来在三角形内部做线性插值，从而给三角形内部那些没有$$f$$定义的点赋值。取一个三角形$$T$$，顶点为$$p_1, p_2, p_3$$，对应的函数值为$$f_1, f_2, f_3$$。那么对于三角形内部任何一点$$f$$，可以用坐标$$(\lambda_1, \lambda_2, \lambda_3)$$来表示$$f = \lambda_1 f_1 + \lambda_2 f_2 + \lambda_3 f_3$$，其中$$\lambda_1+\lambda_2 + \lambda_3 = 1$$。
 
@@ -120,7 +122,7 @@ z - z_3 \\
 \end{pmatrix} = \begin{pmatrix} x_1 - x_3 & x_2 - x_3 \\ y_1 - y_3 & y_2 - y_3 \\ z_1 - z_3 & z_2 - z_3 \\ \end{pmatrix} \begin{pmatrix} \lambda_1 \\ \lambda_2 \end{pmatrix}
 $$
 
-记上述式子右侧的$$3 \times 2$$矩阵为$$E = \left[ \pmb{e}_{13} \  \pmb{e}_{23} \right]$$，其中$$\pmb{e}_{13} = f_1 - f_3, \pmb{e}_{23} = p2 - p3$$。上述方程的解为：
+记上述式子右侧的$$3 \times 2$$矩阵为$$E = \left[ \pmb{e}_{13} \  \pmb{e}_{23} \right]$$，其中$$\pmb{e}_{13} = f_1 - f_3, \pmb{e}_{23} = f2 - f3$$。上述方程的解为：
 
 $$
 \begin{pmatrix}
@@ -143,37 +145,32 @@ $$f - f_3 = \lambda_1(f_1-f_3) + \lambda_2 (f_2-f_3)$$
 
 $$(f-f_3) \times (f_2-f_3) = \lambda_1 (f_1-f_3) \times (f_2 - f_3) + \lambda_2 (f_2 - f_3) \times (f_2 - f_3) = \lambda_1 (f_1-f_3) \times (f_2 - f_3)$$
 
-两侧取模，右侧叉乘的模是三角形$$f_1f_2f_3$$面积的两倍，左侧叉乘的模是三角形$$ff_2f_3$$面积的两倍，从而：
+两侧取模，右侧叉乘的模是三角形$$\triangle_{f_1f_2f_3}$$面积$$A(f_1,f_2,f_3)$$的两倍，左侧叉乘的模是三角形$$\triangle_{ff_2f_3}$$面积$$A(f,f_2,f_3)$$的两倍，从而：
 
 $$\lambda_1 = \frac{A(f,f_2, f_3)}{A(f_1, f_2, f_3)}$$
 
-> 注意，$$\lambda_1 \geq 0$$因为点$$f$$在三角形内部。
+> 注意，$$\lambda_1 \geq 0$$因为点$$f$$在三角形$$\triangle_{f_1f_2f_3}$$内部。
 
 $$\lambda_1$$是关于$$f=(x,y,z)$$的函数
 
-$$\lambda_1(f) = \frac{A(f,f_2, f_3)}{A(f_1, f_2, f_3)} = \frac{\left[ (f - f_2) \times (f_3 - f_2) \right] \cdot \pmb{n}}{2A}$$
+$$\lambda_1(f) = \frac{A(f,f_2, f_3)}{A(f_1, f_2, f_3)} = \frac{\left[ (f - f_2) \times (f_3 - f_2) \right] \cdot \pmb{n}}{2A} = \frac{(f \times \pmb{e_{23}}) \cdot \pmb{n} - (f_2 \times \pmb{e_{23}}) \cdot \pmb{n}}{2A} = \frac{(\pmb{e_{23}} \times \pmb{n}) \cdot f - (f_2 \times \pmb{e_{23}}) \cdot \pmb{n}}{2A}$$
 
-其中$$A$$是三角形$$f_1f_2f_3$$面积，$$\pmb{n}$$是垂直于该三角形平面的单位法向量。
+其中$$A$$表示三角形面积，$$\pmb{n}$$是垂直于三角形$$\triangle_{f_1f_2f_3}$$平面的单位法向量（三角形$$\triangle_{f_1f_2f_3}$$和三角形$$\triangle_{ff_2f_3}$$在同一个平面内）。
 
-令$$e_{23} = f_3 - f_2$$，从而
+从而$$\nabla \lambda_1(f)$$对$$f=(x,y,z)$$的梯度为：
 
-$$\lambda_1(f) = \frac{(f \times e_{23}) \cdot \pmb{n} - (f_2 \times e_{23}) \cdot \pmb{n}}{2A} = \frac{(e_{23} \times \pmb{n}) \cdot f - (f_2 \times e_{23}) \cdot \pmb{n}}{2A}$$
+$$\nabla \lambda_1 = \frac{\pmb{e_{23}} \times \pmb{n}}{2A}$$
 
-其对$$f=(x,y,z)$$的梯度为：
+类似的，$$\nabla \lambda_2 = \frac{\pmb{e_{31}} \times \pmb{n}}{2A}, \nabla \lambda_3 = \frac{\pmb{e_{12}} \times \pmb{n}}{2A}$$
 
-$$\nabla \lambda_1 = \frac{e_{23} \times \pmb{n}}{2A}$$
+**第二步：计算每个三角形$$T$$面上的Dirichlet能量**
 
-类似的，$$\nabla \lambda_2 = \frac{e_{31} \times \pmb{n}}{2A}, \nabla \lambda_3 = \frac{e_{12} \times \pmb{n}}{2A}$$
-
-第二步：计算每个三角形面上的Dirichlet能量
-
-有了上述结果，我们就可以计算一个三角形$$f_1f_2f_3$$内的Dirichlet能量了：
+有了上述结果，我们就可以计算一个三角形$$T = \triangle_{f_1f_2f_3}$$内的Dirichlet能量了：
 
 $$
 \begin{align}
-E_T &= \int_{T} \lVert \nabla f \rVert^2 dA = A \lVert \nabla f \rVert^2 = A \lVert f_1 \nabla \lambda_1 + f_2 \nabla \lambda_2 + f_3 \nabla \lambda_3 \rVert^2 \\
-&= A \langle  f_1 \nabla \lambda_1 + f_2 \nabla \lambda_2 + f_3 \nabla \lambda_3, f_1 \nabla \lambda_1 + f_2 \nabla \lambda_2 + f_3 \nabla \lambda_3 \rangle \\
-&= A \sum_{i,j=1,2,3} f_i f_j \langle \nabla \lambda_i, \nabla \lambda_j \rangle
+E_T &= \int_{T} \lVert \nabla f \rVert^2 dA = \int_{T} \lVert f_1 \nabla \lambda_1 + f_2 \nabla \lambda_2 + f_3 \nabla \lambda_3 \rVert^2 dA = A_T \lVert f_1 \nabla \lambda_1 + f_2 \nabla \lambda_2 + f_3 \nabla \lambda_3 \rVert^2 \\
+&= A_T \langle  f_1 \nabla \lambda_1 + f_2 \nabla \lambda_2 + f_3 \nabla \lambda_3, f_1 \nabla \lambda_1 + f_2 \nabla \lambda_2 + f_3 \nabla \lambda_3 \rangle = A_T \sum_{i=1}^3 f_i^2 \langle \nabla \lambda_i, \nabla \lambda_i \rangle + 2A_T \sum_{1 \leq i < j \leq 3} f_i f_j \langle \nabla \lambda_i, \nabla \lambda_j \rangle$$
 \end{align}
 $$
 
