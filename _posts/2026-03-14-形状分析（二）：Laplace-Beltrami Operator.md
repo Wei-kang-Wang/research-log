@@ -198,11 +198,7 @@ $$E(f)_1 = \sum_{T \in \mathcal{F}} \sum_{i,j=1,2,3, i \neq j} f_i f_j A_{T} \la
 上述式子最后结果的第二项为：
 
 $$
-\begin{align}
-E(f)_2 &= \sum_{T \in \mathcal{F}} \sum_{i=1,2,3} f_i f_i A_T \langle \nabla \lambda_i, \nabla \lambda_i \rangle = \sum_{T \in \mathcal{F}} \sum_{i=1,2,3} f_i^2 A_T \frac{1}{h_{i,T}^2} \\
-&= \sum_{T \in \mathcal{F}} \sum_{i=1,2,3} f_i^2 \frac{e_{i,T} h_{i,T}}{2h_{i,T}^2} = \sum_{T \in \mathcal{F}} \sum_{i=1,2,3} f_i^2 \frac{e_{i,T}}{2h_{i,T}} \\
-&= \sum_{T \in \mathcal{F}} \sum_{i=1,2,3} f_i^2 \frac{1}{2} (\text{cot} \theta_{i_1, T} + \text{cot} \theta_{i_2, T})
-\end{align}
+E(f)_2 = \sum_{T \in \mathcal{F}} \sum_{i=1,2,3} f_i f_i A_T \langle \nabla \lambda_i, \nabla \lambda_i \rangle = \sum_{T \in \mathcal{F}} \sum_{i=1,2,3} f_i^2 A_T \frac{1}{h_{i,T}^2} = \sum_{T \in \mathcal{F}} \sum_{i=1,2,3} f_i^2 \frac{e_{i,T} h_{i,T}}{2h_{i,T}^2} = \sum_{T \in \mathcal{F}} \sum_{i=1,2,3} f_i^2 \frac{e_{i,T}}{2h_{i,T}} = \sum_{T \in \mathcal{F}} \sum_{i=1,2,3} f_i^2 \frac{1}{2} (\text{cot} \theta_{i_1, T} + \text{cot} \theta_{i_2, T})
 $$
 
 其中$$h_{i,T}$$表示三角形$$T$$里顶点$$i$$对应的高，$$e_{i,T}$$表示三角形$$T$$里顶点$$i$$对应的边，$$\theta_{i_1, T}, \theta_{i_2, T}$$表示三角形$$T$$里除去顶点$$i$$对应的那个角的另外两个角。
