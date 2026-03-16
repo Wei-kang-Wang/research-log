@@ -203,6 +203,10 @@ $$
 
 其中$$h_{i,T}$$表示三角形$$T$$里顶点$$i$$对应的高，$$e_{i,T}$$表示三角形$$T$$里顶点$$i$$对应的边，$$\theta_{i_1, T}, \theta_{i_2, T}$$表示三角形$$T$$里除去顶点$$i$$对应的那个角的另外两个角。
 
+注意到：
+
+$$E(f)_2 = \sum_{T \in \mathcal{F}} \sum_{i=1,2,3} f_i^2 \frac{1}{2} (\text{cot} \theta_{i_1, T} + \text{cot} \theta_{i_2, T}) = \sum_{(i,j) \in \mathcal{E}} \frac{1}{4} (f_i^2 + f_j^2) (\text{cot} \alpha_{ij} + \text{cot} \beta_{ij})$$
+
 将这两项合并，得到最终的Dirichlet能量：
 
 $$E(f) = \frac{1}{2} \sum_{(i,j) \in \mathcal{E}} \frac{1}{2} (\text{cot} \alpha_{ij} + \text{cot} \beta_{ij}) (f_i - f_j)^2$$
