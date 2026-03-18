@@ -14,9 +14,11 @@ tags: shape_analysis
 
 ---
 
-### 1. 泛函分析里的一些基本概念
+Laplace算子是将函数映射到函数的算子，其是微分几何中一个常见的重要概念，而Laplace-Beltrami算子是定义在流形上的Laplace算子。在shape analysis里，Laplace-Beltrami算子也是一种常见的分析工具。下面我们先介绍general的Laplace-Beltrami算子，再介绍将其拓展到离散网格上的结果，最后探讨其一些性质以及其在shape analysis里很多任务上的使用。
 
-首先，我们介绍一些基本概念。
+### 1. 连续流形上的Laplace-Beltrami算子
+
+首先，我们介绍泛函分析里的一些基本概念。
 
 **Banach空间**：给定一个流形 $$S$$，$$X$$表示定义在$$S$$上的实值函数空间，且定义该函数空间的范数$$\lVert \  \cdot \  \rVert$$。如果$$X$$里的任意柯西列都收敛到$$X$$里的某个函数，其中$$X$$里的柯西列表示一系列函数$$f_1, f_2, \cdots$$，且$$\lim_{n,m \rightarrow \infty} \lVert f_n - f_m \rVert = 0$$，那么该函数空间$$X$$是完备的。完备的向量空间称为Banach空间。
 
@@ -30,8 +32,6 @@ tags: shape_analysis
 
 **Hermitian算子**：一个算子如果满足对函数$$f,g \in X$$，均满足$$\langle Lf,g \rangle = \langle f, Lg \rangle$$，则称其为Hermitian算子，或者说该算子满足Hermitian symmetry。Hermitian算子的一个重要特性是其不同eigenvalues对应的eigenfunctions都相互垂直（$$\lambda \langle f,g \rangle = \langle \lambda f, g \rangle = \langle Lf,g \rangle = \langle f, Lg \rangle = \langle f, \mu g \rangle = \mu \langle f,g \rangle$$，且$$\lambda \neq \mu$$，说明$$\langle f,g \rangle=0$$）。
 
-
-### 2. 连续流形上的Laplace-Beltrami算子
 
 Laplace-Beltrami算子的一般性定义为：
 
@@ -57,7 +57,7 @@ Laplace-Beltrami算子有如下重要的性质：
 > * $$\left[2\right]$$ Nagar, Rajendra, and Shanmuganathan Raman. "Fast and accurate intrinsic symmetry detection." Proceedings of the European Conference on Computer Vision (ECCV). 2018.
 
 
-### 3. 离散情况下的Laplace-Beltrami算子
+### 2. 离散情况下的Laplace-Beltrami算子
 
 在实际应用中，我们所操作的都是由$$\mathcal{M}=(\mathcal{V}, \mathcal{E})$$所表示的离散的三维网格来近似2维流形，从而我们需要将上述定义在连续流形上的Laplace-Beltrami算子离散化到离散的三维网格上。但因为Laplace-Beltrami算子是将函数映射到函数的算子，所以这样的离散化过程并不trivial。
 
@@ -102,9 +102,9 @@ $$M = \text{diag}(A_1, A_2, \cdots, A_V)$$
 > * $$\left[3 \right]$$ Meyer, Mark, et al. "Discrete differential-geometry operators for triangulated 2-manifolds." Visualization and mathematics III. Berlin, Heidelberg: Springer Berlin Heidelberg, 2003. 35-57.
 
 
-### 4. 一些证明
+### 3. 上述定理的证明
 
-下面我们来证明定理一。cotangent Laplacian的推导方式有多种途径，最常用的是利用有限元方法，从Dirichlet能量的变分出发。对于流形$$\mathcal{M}$$上的函数$$f$$，其Dirichlet能量定义为：
+上述cotangent Laplacian结果的推导方式有多种途径，最常用的是利用有限元方法，从Dirichlet能量的变分出发。对于流形$$\mathcal{M}$$上的函数$$f$$，其Dirichlet能量定义为：
 
 $$E(f) = \frac{1}{2}\int_{\mathcal{M}} \lVert \nabla f \rVert^2 dA$$
 
@@ -233,9 +233,7 @@ $$\int_{\mathcal{M}} (g \Delta f + \langle \nabla g, \nabla f \rangle) dA = 0$$
 
 $$\int_{\mathcal{M}} g \Delta f  dA = -\int_{\mathcal{M}} \langle \nabla g, \nabla f \rangle dA$$
 
-现在令上述Green第一恒等式结果里的$$g$$为任意函数，$$f$$为我们所关注的函数$$f$$，从而可得：
-
-$$\int_{\mathcal{M}} g \Delta f dA = -\int_{\mathcal{M}} \langle \nabla f, \nabla g \rangle dA$$
+上述等式对于任意定义在流形$$\mathcal{M}$$上的函数$$f,g$$都成立，我们让$$f$$即为我们所关注的函数，而$$g$$为任意函数，推导出函数$$f$$应满足的关系，从而得出$$\Delta f$$的结果。因为在离散情况下，$$f$$只有在顶点上才有定义的值，我们来对上述恒等式两边进行离散化。
 
 我们先来计算等式右边。注意，根据之前的步骤，我们已经利用线性插值，在每个三角形内部的点也定义了$$f$$的函数值，可以对函数$$g$$也做类似线性插值，从而$$f,g$$都是分段线性函数，在每个三角形$$\triangle_{f_1f_2f_3}$$内：
 
@@ -301,7 +299,7 @@ $$M \Delta \boldsymbol{ f} = -L\boldsymbol{f}$$
 
 因为根据构造$$M,L$$都是对称矩阵。
 
-### 5. 质量矩阵的选择
+### 4. 质量矩阵的选择
 
 根据上面的证明过程，如果严格按照每个三角形内进行线性插值的方式，计算离散Laplace-Beltrami算子作用于函数$$f$$的结果，得到的是一个稠密的质量矩阵$$M$$，结合cotangent矩阵$$L$$，结果为：
 
@@ -316,9 +314,9 @@ $$\Delta \boldsymbol{f} = -M^{-1} L\boldsymbol{f}$$
 但实际上，根据之前的结论，很多时候面积矩阵都是近似为一个对角矩阵，有如下几种近似方式：
 
 * 一致质量矩阵（Consistent Mass Matrix）：这是精确的有限元质量矩阵，非对角，每个三角形贡献$$\frac{A_T}{12}\begin{pmatrix} 2 & 1 & 1 \\ 1 & 2 & 1 \\ 1 & 1 & 2 \\ \end{pmatrix}$$。它来自标准有限元理论，可以追溯到Strang & Fix 1973年的教科书 *An Analysis of the Finite Element Method*
-* Barycentric面积（Row-sum lumping）：$$M_i = \frac{1}{3} \sum_{i \in T} A_T$$，即对于每个顶点$$i$$，其面积等于含有该顶点的所有三角形面积和的$$1/3$$。这等价于对一致质量矩阵做行求和（row lumping）。这是最简单的对角化方案，barycentric dual mesh 给出的面积恰好等于一致质量矩阵的行求和。文献中通常追溯到 Hinton, Rock & Zienkiewicz 1976 年的文章*A note on mass lumping and related processes in the finite element method*，该文系统讨论了 lumping 技术。
-* Voronoi 面积：在每个非钝角三角形内，连接外接圆心到三条边的中点，将三角形分成三个区域，每个区域分配给最近的顶点。对于非钝角三角形，顶点的Voronoi区域面积可以用对边的cotangent权重表示。这个方案来自 Meyer et al. 2003 年的论文*Discrete Differential-Geometry Operators for Triangulated 2-Manifolds*，他们介绍了使用 Voronoi cells 和混合有限元/有限体积方法来推导离散微分几何算子。
-* Mixed Voronoi 面积：纯 Voronoi 面积在钝角三角形时有问题：外接圆心落在三角形外部，导致 Voronoi 区域不合理。Meyer et al. 2003 年的论文*Discrete Differential-Geometry Operators for Triangulated 2-Manifolds*提出了 mixed area 的修正方案，对非钝角三角形用 Voronoi 面积，对钝角三角形用其他策略（将钝角对面的中点代替外接圆心）。这是实际应用中最常用的方案，```libigl``` 中 ```MASSMATRIX_TYPE_VORONOI``` 实现的就是这个版本。
+* Barycentric面积（Row-sum lumping）：$$M_i = \frac{1}{3} \sum_{i \in T} A_T$$，即对于每个顶点$$i$$，其面积等于含有该顶点的所有三角形面积和的$$1/3$$。这等价于对一致质量矩阵做行求和（row lumping）。这是最简单的对角化方案，barycentric dual mesh 给出的面积恰好等于一致质量矩阵的行求和。文献中通常追溯到*Hinton, E. etal. 1976*，该文系统讨论了 lumping 技术。
+* Voronoi面积：在每个非钝角三角形内，连接外接圆心到三条边的中点，将三角形分成三个区域，每个区域分配给最近的顶点。对于非钝角三角形，顶点的Voronoi区域面积可以用对边的cotangent权重表示。这个方案来自*Meyer et al. 2003*，他们介绍了使用Voronoi cells和混合有限元/有限体积方法来推导离散微分几何算子。
+* Mixed Voronoi 面积：纯 Voronoi 面积在钝角三角形时有问题：外接圆心落在三角形外部，导致 Voronoi 区域不合理。*Meyer et al. 2003*提出了mixed area的修正方案，对非钝角三角形用Voronoi面积，对钝角三角形用其他策略（将钝角对面的中点代替外接圆心）。这是实际应用中最常用的方案，```libigl``` 中 ```MASSMATRIX_TYPE_VORONOI``` 实现的就是这个版本。
 
 > Alec Jacobson在```https://alecjacobson.com/weblog/4666.html```提出了一种从混合有限元角度理解 mass lumping 的方式：用分段线性基函数离散位移，用定义在对偶网格（dual mesh）上的分段常数基函数离散速度。选择 Voronoi dual mesh 就自然得到 Voronoi 面积作为对角质量矩阵的元素，选择 barycentric dual mesh 就得到 barycentric 面积。这为不同的面积选择提供了统一的理论框架。
 
@@ -332,6 +330,18 @@ $$\Delta \boldsymbol{f} = -M^{-1} L\boldsymbol{f}$$
 但对于特征函数计算，用完整的质量矩阵确实是更好的选择。广义特征值问题$$L\phi = \lambda M \phi$$中，稀疏的非对角矩阵$$M$$和系数的$$L$$在计算上几乎没有额外困难，而精度更高。
 
 
+> 参考文献
+> * $$\left[1 \right]$$ Strang, Gilbert, George J. Fix, and D. S. Griffin. "An analysis of the finite-element method." (1974): 62-62.
+> * $$\left[2 \right]$$ Hinton, E., T. Rock, and O. C. Zienkiewicz. "A note on mass lumping and related processes in the finite element method." Earthquake Engineering & Structural Dynamics 4.3 (1976): 245-249.
+> * $$\left[3 \right]$$ $$\left[3 \right]$$ Meyer, Mark, et al. "Discrete differential-geometry operators for triangulated 2-manifolds." Visualization and mathematics III. Berlin, Heidelberg: Springer Berlin Heidelberg, 2003. 35-57.
+
+### 5. Laplace-Beltrami算子的应用
+
+
+> 参考文献
+> * Rustamov, Raif M. "Laplace-Beltrami eigenfunctions for deformation invariant shape representation." Symposium on geometry processing. Vol. 257. 2007.
+> * Ovsjanikov, Maks, Jian Sun, and Leonidas Guibas. "Global intrinsic symmetries of shapes." Computer graphics forum. Vol. 27. No. 5. Oxford, UK: Blackwell Publishing Ltd, 2008.
+> * 
 
 
 
