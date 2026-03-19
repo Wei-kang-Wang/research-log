@@ -337,9 +337,21 @@ $$\Delta \boldsymbol{f} = -M^{-1} L\boldsymbol{f}$$
 
 ### 5. Laplace-Beltrami算子的应用
 
+**1. **
+
+先介绍一下等距变换的概念。
+
+**等距变换（isometry transformation）**：根据$$\left[1 \right]$$等里的介绍，一个将surface $$S$$上的点映射到surface $$S^{'}$$上的点的映射，如果其满足映射后$$S^{'}$$上的任意弧长等于该弧上点在$$S$$上的原相构成的弧的长度，则称呼该映射是isometric或者length preserving的。注意$$S$$和$$S^{'}$$可以是同一个surface。
+
+GPS embedding由论文$$\left[4\right]$$提出，是定义在mesh上的per-vertex feature，其希望能够构造一种per-vertex feature，不直接依赖于geodesic distance，从而可以对经过等距变换后的shape，保持其feature不变，且对一些局部的topological noise是鲁棒的（比如手指交叉引起的拓扑变换）。其是基于论文$$\left[3 \right]$$里的关于Laplace-Beltrami算子能够描述mesh的全局性质等结论，利用Laplace-Beltrami算子的eigenfunctions和eigenvalues构造出来的。
+
+
 
 > 参考文献
-> * Rustamov, Raif M. "Laplace-Beltrami eigenfunctions for deformation invariant shape representation." Symposium on geometry processing. Vol. 257. 2007.
+> * $$\left[1 \right]$$ E. Kreyszig, Differential Geometry. Dover, 1991.
+> * $$\left[2 \right]$$ ELAD A., KIMMEL R.: On bending invariant signatures for surfaces. IEEE Trans. Pattern Analysis and Machine Intelligence 25, 10 (2003), 1285–1295
+> * $$\left[3\right]$$ Lévy, Bruno. "Laplace-beltrami eigenfunctions towards an algorithm that" understands" geometry." IEEE International Conference on Shape Modeling and Applications 2006 (SMI'06). IEEE, 2006.
+> * $$\left[4\right]$$ Rustamov, Raif M. "Laplace-Beltrami eigenfunctions for deformation invariant shape representation." Symposium on geometry processing. Vol. 257. 2007.
 > * Ovsjanikov, Maks, Jian Sun, and Leonidas Guibas. "Global intrinsic symmetries of shapes." Computer graphics forum. Vol. 27. No. 5. Oxford, UK: Blackwell Publishing Ltd, 2008.
 > * 
 
