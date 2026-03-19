@@ -14,12 +14,14 @@ tags: shape_analysis
 
 ---
 
+Functional map在2012年由Ovsjanikov Maks等人于$$\left[1 \right]$$中提出，不同于之前的点与点之间的对应关系构成的map，而是用一种新型的方式来表示两个shapes之间的correspondence关系。
+
 ### 1. Functional map
 
 
 
 > 参考文献：
-> * Ovsjanikov, Maks, et al. "Functional maps: a flexible representation of maps between shapes." ACM Transactions on Graphics (ToG) 31.4 (2012): 1-11.
+> * $$\left[1 \right]$$ Ovsjanikov, Maks, et al. "Functional maps: a flexible representation of maps between shapes." ACM Transactions on Graphics (ToG) 31.4 (2012): 1-11.
 > * Ovsjanikov, Maks, et al. "Computing and processing correspondences with functional maps." SIGGRAPH ASIA 2016 Courses. 2016. 1-60.
 > * Nogneng, Dorian, et al. "Improved functional mappings via product preservation." Computer Graphics Forum. Vol. 37. No. 2. 2018.
 > * Melzi, S., et al. "ZoomOut: spectral upsampling for efficient shape correspondence." ACM TRANSACTIONS ON GRAPHICS 38.6 (2019).
