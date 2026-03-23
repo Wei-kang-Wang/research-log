@@ -40,7 +40,7 @@ $$T_{\mathcal{F}}$$和$$T$$之间有如下关系
 
 如果$$\mathcal{M}$$上的函数空间有一组基$$\lbrace \phi_i^{\mathcal{M}} \rbrace_{i=1}^{\infty}$$，那么定义在$$\mathcal{M}$$上的任意函数$$f$$是这组基的一个线性组合$$f = \sum_{i}^{\infty} a_i \phi_i^{\mathcal{M}}$$，从而：
 
-$$T_{\mathcal{F}}(f) = T_{\mathcal{F}}(\sum_{i}^{\infty} a_i \phi_i^{\mathcal{M}}$$) = \sum_{i=1}^{\infty} a_i T_{\mathcal{F}}(\phi_i^{\mathcal{M}})$$
+$$T_{\mathcal{F}}(f) = T_{\mathcal{F}}(\sum_{i}^{\infty} a_i \phi_i^{\mathcal{M}}) = \sum_{i=1}^{\infty} a_i T_{\mathcal{F}}(\phi_i^{\mathcal{M}})$$
 
 如果$$\mathcal{N}$$上的函数空间也有一组基$$\lbrace \phi_i^{\mathcal{N}} \rbrace_{i=1}^{\infty}$$，且$$T_{\mathcal{F}}(\phi_i^{\mathcal{M}}) = \sum_{j=1}^{\infty} c_{ij} \phi_j^{\mathcal{N}}$$，那么：
 
@@ -48,7 +48,7 @@ $$T_{\mathcal{F}}(f) = \sum_{i=1}^{\infty} a_i \sum_{j=1}^{\infty} c_{ij} \phi_j
 
 也就是说，如果我们将$$f \in \mathcal{F}(\mathcal{M}, \mathbb{R})$$表示为系数向量$$\boldsymbol{a} = (a_1, a_2, \cdots)$$，将$$g = T_{\mathcal{F}}(f) \in \mathcal{F}(\mathcal{N}, \mathbb{R})$$表示为稀疏向量$$\boldsymbol{b} = (b_1, b_2, \cdots)$$，那么上述结论表明：$$b_j = \sum_{i=1}^{\infty} a_i c_{ij}$$，其中$$a_i, i=1,2,\cdots$$由$$f$$决定，$$c_{ij}$$由$$\phi_i^{\mathcal{M}}$$和$$\phi_j^{\mathcal{N}}$$决定，即由$$\mathcal{M}$$和$$\mathcal{N}$$决定，和$$f$$无关。将所有的$$c_{ij}$$表示为一个矩阵$$C$$（可能是无穷矩阵），即有如下结论：
 
-**性质三**：由$$\mathcal{M}$$和$$\mathcal{N}$$之间的bijective pointwise map $$T$$得到的functional representation $$T_{\mathcal{F}}$$可以由矩阵$$C$$（可能是无穷大小的）完全表示，即对于以系数向量$$\boldsymbol{a}$$表示的定义在$$\mathcal{M}$$上的函数$$f$$，$$T_{\mathcal{F}}(f) = C\symbol{a}$$。
+**性质三**：由$$\mathcal{M}$$和$$\mathcal{N}$$之间的bijective pointwise map $$T$$得到的functional representation $$T_{\mathcal{F}}$$可以由矩阵$$C$$（可能是无穷大小的）完全表示，即对于以系数向量$$\boldsymbol{a}$$表示的定义在$$\mathcal{M}$$上的函数$$f$$，$$T_{\mathcal{F}}(f) = C\boldsymbol{a}$$。
 
 > 性质三和性质一表明$$C$$和$$T$$完全等价
 
@@ -56,7 +56,7 @@ $$T_{\mathcal{F}}(f) = \sum_{i=1}^{\infty} a_i \sum_{j=1}^{\infty} c_{ij} \phi_j
 
 **定义一**：对于两个流形$$\mathcal{M}, \mathcal{N}$$，它们上面定义的scalar functions构成的函数空间$$\mathcal{F}(\mathcal{M}, \mathbb{R}), \mathcal{F}(\mathcal{N}, \mathbb{R})$$的一组基分别为$$\lbrace \phi_i^{\mathcal{M}} \rbrace_{i=1}^{\infty}, \lbrace \phi_i^{\mathcal{N}} \rbrace_{i=1}^{\infty}$$。那么依赖这两组基的functional mapping $$T_{\mathcal{F}}: \mathcal{F}(\mathcal{M}, \mathbb{R}) \rightarrow \mathcal{F}(\mathcal{N}, \mathbb{R})$$是由下述结果定义的$$\mathcal{F}(\mathcal{M}, \mathbb{R})$$上的算子：
 
-$$T_{\mathcal{F}(\sum_{i=1}^{\infty} a_i \phi_i^{\mathcal{M}}) = \sum_{j=1}\sum_{i=1} a_i c_{ij} \phi_i^{\mathcal{N}}$$
+$$T_{\mathcal{F}}(\sum_{i=1}^{\infty} a_i \phi_i^{\mathcal{M}}) = \sum_{j=1}\sum_{i=1} a_i c_{ij} \phi_i^{\mathcal{N}}$$
 
 其中$$\lbrace c_{ij} \rbrace _{i,j=1}^{\infty}$$是满足上述结果的矩阵（可能是无限的）。
 
