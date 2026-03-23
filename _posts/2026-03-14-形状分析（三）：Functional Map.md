@@ -14,6 +14,8 @@ tags: shape_analysis
 
 ---
 
+### 1. Functional map的提出与定义
+
 Functional map在2012年由Ovsjanikov Maks等人于$$\left[1 \right]$$中提出，用来描述两个shapes之间的映射关系。其最大的创新点在于，不同于之前的工作将shapes之间的映射关系表示为点与点之间的对应关系（pointwise map），而是用两个shapes上定义的real-valued functions之间的对应关系（functional map）来表示两个shapes之间的映射关系。
 
 $$\left[1 \right]$$中总结了其主要的贡献：
@@ -58,8 +60,9 @@ $$T_{\mathcal{F}(\sum_{i=1}^{\infty} a_i \phi_i^{\mathcal{M}}) = \sum_{j=1}\sum_
 
 其中$$\lbrace c_{ij} \rbrace _{i,j=1}^{\infty}$$是满足上述结果的矩阵（可能是无限的）。
 
+下面是shape matching的一个例子，用来说明pointwise map和functional map，其中颜色转移用来表示pointwise maps，而矩阵用来表示functional maps（使用Laplace-Beltrami算子的eigenfunctions作为basis，且只使用了前20个eigenfunctions）。左一是source shape，左二是ground truth的target shape，左三是left-right翻转的target shape，最右是将tail-head翻转的target shape。可以看出来，对于isometry transformations，即左二左三，functional maps是稀疏的，且大约是对角的，对于最右的这个non-isometric transformation，functional map是稠密的。
 
-### 1. Functional map
+![1]({{ '/assets/images/functional_map_1.png' | relative_url }}){: width=100px style="float:center"} 
 
 
 
