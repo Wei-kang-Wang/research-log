@@ -335,7 +335,7 @@ $$\Delta \boldsymbol{f} = -M^{-1} L\boldsymbol{f}$$
 > 参考文献
 > * $$\left[1 \right]$$ Strang, Gilbert, George J. Fix, and D. S. Griffin. "An analysis of the finite-element method." (1974): 62-62.
 > * $$\left[2 \right]$$ Hinton, E., T. Rock, and O. C. Zienkiewicz. "A note on mass lumping and related processes in the finite element method." Earthquake Engineering & Structural Dynamics 4.3 (1976): 245-249.
-> * $$\left[3 \right]$$ $$\left[3 \right]$$ Meyer, Mark, et al. "Discrete differential-geometry operators for triangulated 2-manifolds." Visualization and mathematics III. Berlin, Heidelberg: Springer Berlin Heidelberg, 2003. 35-57.
+> * $$\left[3 \right]$$ Meyer, Mark, et al. "Discrete differential-geometry operators for triangulated 2-manifolds." Visualization and mathematics III. Berlin, Heidelberg: Springer Berlin Heidelberg, 2003. 35-57.
 
 ### 5. Laplace-Beltrami算子的应用
 
