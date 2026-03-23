@@ -101,7 +101,7 @@ $$M = \text{diag}(A_1, A_2, \cdots, A_V)$$
 > * $$\left[2 \right]$$ Desbrun, Mathieu, et al. "Implicit fairing of irregular meshes using diffusion and curvature flow." Proceedings of the 26th annual conference on Computer graphics and interactive techniques. 1999.
 > * $$\left[3 \right]$$ Meyer, Mark, et al. "Discrete differential-geometry operators for triangulated 2-manifolds." Visualization and mathematics III. Berlin, Heidelberg: Springer Berlin Heidelberg, 2003. 35-57.
 
-**性质一**：由之前的结论，Laplace-Beltrami算子的eigenfunctions构成闭曲面的一个正交基，从而对于闭曲面（即mesh）上定义的任意函数$$f$$，$$f = c_0 f_0 + c_1 f_1 + \cdots$$，其中$$c_i = \int_{\mathcal{M}} \langle f, \phi_i \rangle dp$$为系数，$$0 = \lambda_0 < \lambda_1 < \cdots $$为eigenvalues，$$\phi_0, \phi_1, \cdots$$是对应的eigenfunctions。注意，因为一个mesh的离散Laplace-Beltrami算子$$\Delta = M^{-1}L$$的特征值是0，从而$$\lambda_0=0$$，其对应的$$\phi_0$$为一个常数向量，且因为$$M^{-1}L$$是一个对称实数矩阵，其特征值都是非负实数。
+**性质一**：由之前的结论，Laplace-Beltrami算子的eigenfunctions构成闭曲面的一个正交基，从而对于闭曲面（即mesh）上定义的任意函数$$f$$，$$f = c_0 f_0 + c_1 f_1 + \cdots$$，其中$$c_i = \int_{\mathcal{M}} \langle f, \phi_i \rangle dp$$为系数，$$0 = \lambda_0 < \lambda_1 < \cdots $$为eigenvalues，$$\phi_0, \phi_1, \cdots$$是对应的eigenfunctions。注意，因为一个mesh的离散Laplace-Beltrami算子$$\Delta = M^{-1}L$$的行列式是0，从而$$\lambda_0=0$$，其对应的$$\phi_0$$为一个常数向量，且因为$$M^{-1}L$$是一个实对称矩阵，其特征值都是非负实数。
 
 
 ### 3. 上述定理的证明
