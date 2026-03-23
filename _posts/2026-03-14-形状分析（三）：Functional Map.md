@@ -14,6 +14,11 @@ tags: shape_analysis
 
 ---
 
+https://dl.acm.org/doi/10.1145/3084873.3084877
+
+https://www.sciencedirect.com/science/chapter/handbook/abs/pii/S1570865918300012
+
+
 ### 1. Functional map的提出与定义
 
 Functional map在2012年由Ovsjanikov Maks等人于$$\left[1 \right]$$中提出，用来描述两个shapes之间的映射关系。其最大的创新点在于，不同于之前的工作将shapes之间的映射关系表示为点与点之间的对应关系（pointwise map），而是用两个shapes上定义的real-valued functions之间的对应关系（functional map）来表示两个shapes之间的映射关系。
