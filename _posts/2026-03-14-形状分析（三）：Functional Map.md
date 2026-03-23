@@ -19,7 +19,9 @@ https://dl.acm.org/doi/10.1145/3084873.3084877
 https://www.sciencedirect.com/science/chapter/handbook/abs/pii/S1570865918300012
 
 
-### 1. Functional map的提出与定义
+### 1. Functional map的提出
+
+#### (1). Functional map的定义
 
 Functional map在2012年由Ovsjanikov Maks等人于$$\left[1 \right]$$中提出，用来描述两个shapes之间的映射关系。其最大的创新点在于，不同于之前的工作将shapes之间的映射关系表示为点与点之间的对应关系（pointwise map），而是用两个shapes上定义的real-valued functions之间的对应关系（functional map）来表示两个shapes之间的映射关系。
 
@@ -75,20 +77,65 @@ $$T_{\mathcal{F}}(\sum_{i=1}^{\infty} a_i \phi_i^{\mathcal{M}}) = \sum_{j=1}\sum
 ![1]({{ '/assets/images/functional_map_1.png' | relative_url }}){: width=100px style="float:center"} 
 
 
-> 参考文献：
-> * $$\left[1 \right]$$ Ovsjanikov, Maks, et al. "Functional maps: a flexible representation of maps between shapes." ACM Transactions on Graphics (ToG) 31.4 (2012): 1-11.
-> * $$\left[2 \right]$$ Jain, Varun, Hao Zhang, and Oliver Van Kaick. "Non-rigid spectral correspondence of triangle meshes." International Journal of Shape Modeling 13.01 (2007): 101-124.
-> * $$\left[3 \right]$$ Mateus, Diana, et al. "Articulated shape matching using laplacian eigenfunctions and unsupervised point registration." 2008 IEEE Conference on Computer Vision and Pattern Recognition. IEEE, 2008.
-> * $$\left[4 \right]$$ Ovsjanikov, Maks, Jian Sun, and Leonidas Guibas. "Global intrinsic symmetries of shapes." Computer graphics forum. Vol. 27. No. 5. Oxford, UK: Blackwell Publishing Ltd, 2008.
-
-
-### 2. Functional maps的基的选择
+#### (2). Functional maps的基的选择
 
 Functional maps的提出并不依赖于基的选择，理论上可以是任意定义在流形上的函数空间的基。但实际操作过程中，这些基要满足：（1）compactness，即定义在流形上的绝大部分函数，可以用较少数量的基的线性组合就能够较高精度的表示；（2）stability，即即使shape有小的deformations，其基的线性组合组成的空间也不会有太大的变化。这两条性质可以让functional maps $$T_{\mathcal{F}}$$能够鲁棒的用较少的数量的基来表示，即
 
 $$\sum_{j=1}^{\infty} \sum_{i=1}^{\infty} a_i c_{ij} \phi_j^{\mathcal{N}} \approx \sum_{j=1}^{n} \sum_{i=1}^{m} a_i c_{ij} \phi_j^{\mathcal{N}}$$
 
 其中$$n,m$$是某个设定好的正整数（比如100）。
+
+在实际操作中，Laplace-Beltrami算子的eigenfunctions是最常见的基。
+
+
+#### (3). Functional maps的一些性质
+
+**Functional map的稀疏性**
+
+理论上，如果流形$$\mathcal{M}, \mathcal{N}$$是isometric的，且$$T$$作为bijective pointwise mapping也是一个isometry，那么正交基对应的functional mapping $$C_{ij}$$仅仅当$$\phi_j^{\mathcal{M}}$$和$$\phi_i^{\mathcal{N}}$$对应的eigenvalue值相等的时候，才不为零。也就是说，如果所有的eigenvalues都区分度比较大，那么$$C$$就是个对角矩阵。但实际计算中，$$T$$是near isometry，且$$C$$也是near对角矩阵，其更像是funnel-shaped，即左上角对应较小eigenvalues的区域基本上对角的，越往右下角越发散（对应几何细节）。
+
+
+**关于Functional maps的线性约束**
+
+对于一对给定的函数$$f: \mathcal{M} \rightarrow \mathbb{R}, g: \mathcal{N} \rightarrow \mathbb{R}$$，函数$$f$$和$$g$$之间的对应关系可以由$$C\boldsymbol{a} = \boldsymbol{b}$$来表示，其中$$\boldsymbol{a}, \boldsymbol{b}$$分别是函数$$f,g$$在$$\mathcal{M}, \mathcal{N}$$下某组基的系数向量，$$C$$是该映射的functional representation。在shape matching任务里，$$C$$以及pointwise mapping $$T$$都是未知的，而可能有多组$$(f_i, g_i)$$，即对应的$$(\boldsymbol{a_i}, \boldsymbol{b_i})$$是已知的，而它们的关系$$C\boldsymbol{a_i} = \boldsymbol{b_i}$$都是线性的，便于我们设计优化算法以及计算。
+
+上述约束的常见几种是：
+
+* Descriptor preservation，即$$f,g$$是per-vertex的features，如果$$f,g$$是scalar functions，比如每个点的高斯曲率，那么就有一个上述的约束。如果$$f,g$$是向量函数，比如每个点的高维特征，那么每个特征维度都有一个上述的约束（将每个维度都视作一个独立的函数）。
+* Landmark point correspondences，如果我们给定两个shapes上对应的关键点的标注，即$$x \in \mathcal{M}, y \in \mathcal{N}$$，满足$$T(x) = y$$，其中$$T$$是未知的pointwise mapping。那么我们可以设计$$f,g$$是分别以$$x,y$$为中心的距离函数，或者分布函数。
+* Segment correspondences，类似于landmark point correspondence，如果我们给定两个shapes上对应区域，也可以设计类似的函数$$f,g$$。
+
+
+**Functional maps与线性算子的交换性**
+
+如果我们在shapes $$\mathcal{M}, \mathcal{N}$$上还定义了别的线性算子（注意是算子，是函数与函数的映射，而不是函数），那么functional maps还可以与这些线性算子结合提供约束。比如说，对于对称的shape $$\mathcal{M}$$，如果我们有一个pointwise mapping$$S: \mathcal{M} \rightarrow \mathcal{M}$$来表示对称性，那么我们就可以定义一个symmetry operator $$S_{\mathcal{F}}: \mathcal{F}(\mathcal{M}, \mathbb{R}) \rightarrow \mathcal{F}(\mathcal{M}, \mathbb{R})$$，将定义在$$\mathcal{M}$$上的任意函数$$f: \mathcal{M} \rightarrow \mathbb{R}$$映射到另一个定义在$$\mathcal{M}$$的函数$$S_{\mathcal{F}}(f)$$上：$$S_{\mathcal{F}}(f) = f(S^{-1}(x)), \forall x \in \mathcal{M}$$。另一个例子是Laplace-Beltrami算子，即热传导算子。
+
+实际上，对于任意定义在$$\mathcal{M}$$上的线性算子$$S_{\mathcal{F}}$$，和定义在$$\mathcal{N}$$上的线性算子$$R_{\mathcal{F}}$$，下述的约束都需要成立：
+
+$$\lVert R_{\mathcal{F}}C - CS_{\mathcal{F}} \rVert = 0$$
+
+> 注意，$$S_{\mathcal{F}}$$和$$R_{\mathcal{F}}$$是同样的算子，区别仅仅在于一个定义在$$\mathcal{M}$$上，一个定义在$$\mathcal{N}$$上。因为我们这里想要强调的是functional map $$C$$和一般性线性算子的交换律，但交换了线性算子和$$C$$的位置之后，因为$$C$$是将$$\mathcal{M}$$上的函数映射到$$\mathcal{N}$$上的函数的算子，所以那个线性算子也需要改变其所定义在的shape。而且这样一个约束是用来在优化求解functional map $$C$$的时候用的，因此我们已经有个前提假设是这两个shapes $$\mathcal{M}, \mathcal{N}$$存在ground truth pointwise mapping以及ground truth functional mapping，因此其上定义的相同的线性算子就会有类似的效果，即如果该线性算子是上面对称性算子的例子，那么$$\mathcal{M}, \mathcal{N}$$就都是对称的，这个算子在两个shapes上的作用是相同的。
+
+> 为什么上述约束$$\lVert R_{\mathcal{F}}C - CS_{\mathcal{F}} \rVert = 0$$是线性的？将$$C$$展平为向量$$\boldsymbol{c}$$，利用Kronecker积的经典恒等式：$$\text{vec}(ABC) = (C^{\top} \otimes A)\text{vec}(B)$$。$$R_{\mathcal{F}}C = R_{\mathcal{F}} \cdot C \cdot I，从而$$\text{vec}(R_{\mathcal{F}}C)) = (I \otimes R_{\mathcal{F}}) \boldsymbol{c}$$，$$CS_{\mathcal{F}} = I \cdot C \cdot S_{\mathcal{F}}$$，从而$$\text{vec}(CS_{\mathcal{F}}) = (S_{\mathcal{F}}^{\top} \otimes I) \boldsymbol{c}$$，从而约束即为：\text{vec}(R_{\mathcal{F}}C - CS_{\mathcal{F}} \rVert) = \left[(I \otimes R_{\mathcal{F}}) - (S_{\mathcal{F}}^{\top} \otimes I) \right] \boldsymbol{c} = 0$$，为关于$$\boldsymbol{c}$$的线性约束。
+
+
+**Functional maps的正交约束**
+
+如果shapes $$\mathcal{M}, \mathcal{N}$$上的函数空间选择的基是正交基，满足$$\phi_{i}^{\top} \phi_j = 0, i \neq j; \lVert \phi_{i} \rVert = 1 \forall i$$，那么其对应的functional maps，需要是规范正交的（orthonormal），即：
+
+$$C^{\top} C = I$$
+
+在设计优化算法时，上述约束均可以作为functional maps的约束加入。
+
+
+
+
+
+> 参考文献：
+> * $$\left[1 \right]$$ Ovsjanikov, Maks, et al. "Functional maps: a flexible representation of maps between shapes." ACM Transactions on Graphics (ToG) 31.4 (2012): 1-11.
+> * $$\left[2 \right]$$ Jain, Varun, Hao Zhang, and Oliver Van Kaick. "Non-rigid spectral correspondence of triangle meshes." International Journal of Shape Modeling 13.01 (2007): 101-124.
+> * $$\left[3 \right]$$ Mateus, Diana, et al. "Articulated shape matching using laplacian eigenfunctions and unsupervised point registration." 2008 IEEE Conference on Computer Vision and Pattern Recognition. IEEE, 2008.
+> * $$\left[4 \right]$$ Ovsjanikov, Maks, Jian Sun, and Leonidas Guibas. "Global intrinsic symmetries of shapes." Computer graphics forum. Vol. 27. No. 5. Oxford, UK: Blackwell Publishing Ltd, 2008.
 
 
 
