@@ -86,7 +86,7 @@ $$T_{\mathcal{F}}(\sum_{i=1}^{\infty} a_i \phi_i^{\mathcal{M}}) = \sum_{j=1}\sum
 
 Functional maps的提出并不依赖于基的选择，理论上可以是任意定义在流形上的函数空间的基。但实际操作过程中，这些基要满足：（1）compactness，即定义在流形上的绝大部分函数，可以用较少数量的基的线性组合就能够较高精度的表示；（2）stability，即即使shape有小的deformations，其基的线性组合组成的空间也不会有太大的变化。这两条性质可以让functional maps $$T_{\mathcal{F}}$$能够鲁棒的用较少的数量的基来表示，即
 
-$$\sum_{j=1}^{\infty} \sum_{i=1}^{\infty} a_i c_{ij} \phi_j^{\mathcal{N}} \appro \sum_{j=1}^{n} \sum_{i=1}^{m} a_i c_{ij} \phi_j^{\mathcal{N}}$$
+$$\sum_{j=1}^{\infty} \sum_{i=1}^{\infty} a_i c_{ij} \phi_j^{\mathcal{N}} \approx \sum_{j=1}^{n} \sum_{i=1}^{m} a_i c_{ij} \phi_j^{\mathcal{N}}$$
 
 其中$$n,m$$是某个设定好的正整数（比如100）。
 
