@@ -365,4 +365,4 @@ $$G(p, q) = \text{GPS}(p) \cdot \text{GPS}(q)$$
 > * $$\left[1 \right]$$ E. Kreyszig, Differential Geometry. Dover, 1991.
 > * $$\left[2 \right]$$ ELAD A., KIMMEL R.: On bending invariant signatures for surfaces. IEEE Trans. Pattern Analysis and Machine Intelligence 25, 10 (2003), 1285–1295
 > * $$\left[3\right]$$ Lévy, Bruno. "Laplace-beltrami eigenfunctions towards an algorithm that" understands" geometry." IEEE International Conference on Shape Modeling and Applications 2006 (SMI'06). IEEE, 2006.
-> * $$\left[4\right]$$ Rustamov, Raif M. "Laplace-Beltrami eigenfunctions for deformation invariant shape representation." Symposium on geometry processing. Vol. 257. 2007.
+> * $$\left[4\right]$$ Rustamov, Raif M. "Laplace-Beltrami eigenfunctions for deformation invariant shape representation." Symposium on geometry processing. Vol. 257. 2007. 补充材料：https://www.cs.jhu.edu/~misha/Fall07/Notes/Rustamov07.pdf
