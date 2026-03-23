@@ -62,6 +62,7 @@ $$T_{\mathcal{F}}(\sum_{i=1}^{\infty} a_i \phi_i^{\mathcal{M}}) = \sum_{j=1}\sum
 
 其中$$\lbrace c_{ij} \rbrace _{i,j=1}^{\infty}$$是满足上述结果的矩阵（可能是无限的）。
 
+
 下面是shape matching的一个例子，用来说明pointwise map和functional map，其中颜色转移用来表示pointwise maps，而矩阵用来表示functional maps（使用Laplace-Beltrami算子的eigenfunctions作为basis，且只使用了前20个eigenfunctions）。左一是source shape，左二是ground truth的target shape，左三是left-right翻转的target shape，最右是将tail-head翻转的target shape。可以看出来，对于isometry transformations，即左二左三，functional maps是稀疏的，且大约是对角的，对于最右的这个non-isometric transformation，functional map是稠密的。
 
 > 注意，作者提到所有的这些map都不是diagonal的，并给出了$$\left[2,3,4 \right]$$三个参考文献，这是因为即使是isometric的shapes，它们的eigenvalues以及eigenfunctions也不会完全相同，而且即使是同一个shape（做self matching），shape可能会有重复的eigenvalues，其会产生一些块状正交矩阵（块的大小是该eigenvalue对应的eigenvectors张成的空间维度）。
@@ -74,6 +75,16 @@ $$T_{\mathcal{F}}(\sum_{i=1}^{\infty} a_i \phi_i^{\mathcal{M}}) = \sum_{j=1}\sum
 > * $$\left[2 \right]$$ Jain, Varun, Hao Zhang, and Oliver Van Kaick. "Non-rigid spectral correspondence of triangle meshes." International Journal of Shape Modeling 13.01 (2007): 101-124.
 > * $$\left[3 \right]$$ Mateus, Diana, et al. "Articulated shape matching using laplacian eigenfunctions and unsupervised point registration." 2008 IEEE Conference on Computer Vision and Pattern Recognition. IEEE, 2008.
 > * $$\left[4 \right]$$ Ovsjanikov, Maks, Jian Sun, and Leonidas Guibas. "Global intrinsic symmetries of shapes." Computer graphics forum. Vol. 27. No. 5. Oxford, UK: Blackwell Publishing Ltd, 2008.
+
+
+### 2. Functional maps的基的选择
+
+Functional maps的提出并不依赖于基的选择，理论上可以是任意定义在流形上的函数空间的基。但实际操作过程中，这些基要满足：（1）compactness，即定义在流形上的绝大部分函数，可以用较少数量的基的线性组合就能够较高精度的表示；（2）stability，即即使shape有小的deformations，其基的线性组合组成的空间也不会有太大的变化。这两条性质可以让functional maps $$T_{\mathcal{F}}$$能够鲁棒的用较少的数量的基来表示，即
+
+$$\sum_{j=1}^{\infty} \sum_{i=1}^{\infty} a_i c_{ij} \phi_j^{\mathcal{N}} \appro \sum_{j=1}^{n} \sum_{i=1}^{m} a_i c_{ij} \phi_j^{\mathcal{N}}$$
+
+其中$$n,m$$是某个设定好的正整数（比如100）。
+
 
 
 
