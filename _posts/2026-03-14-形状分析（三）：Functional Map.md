@@ -30,7 +30,9 @@ $$T_{\mathcal{F}}$$和$$T$$之间有如下关系
 
 **性质一**：给定$$T_{\mathcal{F}}$$，我们可以还原原始的mapping $$T$$
 
-证明：对于$$\mathcal{M}$$上任意一点$$a$$，构建一个定义在$$\mathcal{M}$$上的indicator function $$f$$，满足$$f(a)=1$$，$$f(v) = 0, \forall v \neq a$$。而$$g(y) = T_{\mathcal{F}}(f)(y) = f \circ T^{-1}(y)$$，对于$$\mathcal{N}$$上的任一点$$b$$，一方面$$g(b)$$由$$T_{\mathcal{F}}(b)$$给定，另一方面根据构造只有在$$T^{-1}(b)=a$$的情况下$$g(y)$$才等于$$1$$，别的情况下都是$$0$$，从而就找到了满足$$T^{-1}(b)=a$$的$$b$$。而且因为$$T$$是bijective的，从而上述点$$b$$是唯一的，即$$T(a) = b$$。
+证明：对于$$\mathcal{M}$$上任意一点$$a$$，构建一个定义在$$\mathcal{M}$$上的indicator function $$f$$，满足$$f(a)=1$$，$$f(v) = 0, \forall v \neq a$$。而$$g(y) = T_{\mathcal{F}}(f)(y) = f \circ T^{-1}(y)$$，对于$$\mathcal{N}$$上的任一点$$b$$，一方面$$g(b)$$由$$T_{\mathcal{F}}(f)(b)$$给定，另一方面根据构造只有在$$T^{-1}(b)=a$$的情况下$$g(y)$$才等于$$1$$，别的情况下都是$$0$$，从而就找到了满足$$T^{-1}(b)=a$$的$$b$$。而且因为$$T$$是bijective的，从而上述点$$b$$是唯一的，即$$T(a) = b$$。
+
+> 注意，这个结论并不是说$$T_{\mathcal{F}}$$空间等价于$$T$$，其说的是一个由某个bijective pointwise mapping $$T$$推导出的functional representation $$T_{\mathcal{F}}$$可以用来恢复其对应的$$T$$，从而它们是等价的。但对于$$T_{\mathcal{F}}$$空间里任意一个元素，其不一定有对应的$$T$$，比如说将任意定义在$$\mathcal{M}$$上的函数$$f$$都映射为定义在$$\mathcal{N}$$上的全零函数，其就不存在对应的$$T$$。
 
 **性质二**：对于任意的bijective pointwise map $$T: \mathcal{M} \rightarrow \mathcal{N}$$，由它得到的functional representation $$T_{\mathcal{F}}$$是定义在$$\mathcal{M}$$上的函数构成的函数空间的线性算子。
 
@@ -62,12 +64,20 @@ $$T_{\mathcal{F}}(\sum_{i=1}^{\infty} a_i \phi_i^{\mathcal{M}}) = \sum_{j=1}\sum
 
 下面是shape matching的一个例子，用来说明pointwise map和functional map，其中颜色转移用来表示pointwise maps，而矩阵用来表示functional maps（使用Laplace-Beltrami算子的eigenfunctions作为basis，且只使用了前20个eigenfunctions）。左一是source shape，左二是ground truth的target shape，左三是left-right翻转的target shape，最右是将tail-head翻转的target shape。可以看出来，对于isometry transformations，即左二左三，functional maps是稀疏的，且大约是对角的，对于最右的这个non-isometric transformation，functional map是稠密的。
 
-![1]({{ '/assets/images/functional_map_1.png' | relative_url }}){: width=100px style="float:center"} 
+> 注意，作者提到所有的这些map都不是diagonal的，并给出了$$\left[2,3,4 \right]$$三个参考文献，这是因为即使是isometric的shapes，它们的eigenvalues以及eigenfunctions也不会完全相同，而且即使是同一个shape（做self matching），shape可能会有重复的eigenvalues，其会产生一些块状正交矩阵（块的大小是该eigenvalue对应的eigenvectors张成的空间维度）。
 
+![1]({{ '/assets/images/functional_map_1.png' | relative_url }}){: width=100px style="float:center"} 
 
 
 > 参考文献：
 > * $$\left[1 \right]$$ Ovsjanikov, Maks, et al. "Functional maps: a flexible representation of maps between shapes." ACM Transactions on Graphics (ToG) 31.4 (2012): 1-11.
+> * $$\left[2 \right]$$ Jain, Varun, Hao Zhang, and Oliver Van Kaick. "Non-rigid spectral correspondence of triangle meshes." International Journal of Shape Modeling 13.01 (2007): 101-124.
+> * $$\left[3 \right]$$ Mateus, Diana, et al. "Articulated shape matching using laplacian eigenfunctions and unsupervised point registration." 2008 IEEE Conference on Computer Vision and Pattern Recognition. IEEE, 2008.
+> * $$\left[4 \right]$$ Ovsjanikov, Maks, Jian Sun, and Leonidas Guibas. "Global intrinsic symmetries of shapes." Computer graphics forum. Vol. 27. No. 5. Oxford, UK: Blackwell Publishing Ltd, 2008.
+
+
+
+
 > * Ovsjanikov, Maks, et al. "Computing and processing correspondences with functional maps." SIGGRAPH ASIA 2016 Courses. 2016. 1-60.
 > * Nogneng, Dorian, et al. "Improved functional mappings via product preservation." Computer Graphics Forum. Vol. 37. No. 2. 2018.
 > * Melzi, S., et al. "ZoomOut: spectral upsampling for efficient shape correspondence." ACM TRANSACTIONS ON GRAPHICS 38.6 (2019).
