@@ -14,10 +14,6 @@ tags: shape_analysis
 
 ---
 
-https://dl.acm.org/doi/10.1145/3084873.3084877
-
-https://www.sciencedirect.com/science/chapter/handbook/abs/pii/S1570865918300012
-
 
 ### 1. Functional map的提出
 
@@ -153,6 +149,11 @@ $$C^{\top} C = I$$
 * 利用第(4)节里的方法来计算得到pointwise map
 
 
+#### (6). Additional阅读
+
+$$\left[[5](https://dl.acm.org/doi/10.1145/3084873.3084877) \right]$$和$$\left[[6]([https://dl.acm.org/doi/10.1145/3084873.3084877](https://www.sciencedirect.com/science/chapter/handbook/abs/pii/S1570865918300012)) \right]$$提供了更为完整和详尽的解释。
+
+[An Introductory Perspective on Functional Maps](https://xieyizheng.com/media/papers/intro-functional-maps/Report_Functional_Maps.pdf)也提供了一个解释。
 
 
 
@@ -161,12 +162,13 @@ $$C^{\top} C = I$$
 > * $$\left[2 \right]$$ Jain, Varun, Hao Zhang, and Oliver Van Kaick. "Non-rigid spectral correspondence of triangle meshes." International Journal of Shape Modeling 13.01 (2007): 101-124.
 > * $$\left[3 \right]$$ Mateus, Diana, et al. "Articulated shape matching using laplacian eigenfunctions and unsupervised point registration." 2008 IEEE Conference on Computer Vision and Pattern Recognition. IEEE, 2008.
 > * $$\left[4 \right]$$ Ovsjanikov, Maks, Jian Sun, and Leonidas Guibas. "Global intrinsic symmetries of shapes." Computer graphics forum. Vol. 27. No. 5. Oxford, UK: Blackwell Publishing Ltd, 2008.
+> * $$\left[5 \right]$$ Ovsjanikov, Maks, et al. "Computing and processing correspondences with functional maps." SIGGRAPH ASIA 2016 Courses. 2016. 1-60.
+> * $$\left[6 \right]$$ Ovsjanikov, Maks. "Shape correspondence and functional maps." Handbook of Numerical Analysis. Vol. 19. Elsevier, 2018. 91-118.
 
 
 
 
 
-> * Ovsjanikov, Maks, et al. "Computing and processing correspondences with functional maps." SIGGRAPH ASIA 2016 Courses. 2016. 1-60.
 > * Nogneng, Dorian, et al. "Improved functional mappings via product preservation." Computer Graphics Forum. Vol. 37. No. 2. 2018.
 > * Melzi, S., et al. "ZoomOut: spectral upsampling for efficient shape correspondence." ACM TRANSACTIONS ON GRAPHICS 38.6 (2019).
 > * Ren, Jing, et al. "Structured regularization of functional map computations." Computer Graphics Forum. Vol. 38. No. 5. 2019.
