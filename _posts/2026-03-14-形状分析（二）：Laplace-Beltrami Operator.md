@@ -337,9 +337,28 @@ $$\Delta \boldsymbol{f} = -M^{-1} L\boldsymbol{f}$$
 > * $$\left[2 \right]$$ Hinton, E., T. Rock, and O. C. Zienkiewicz. "A note on mass lumping and related processes in the finite element method." Earthquake Engineering & Structural Dynamics 4.3 (1976): 245-249.
 > * $$\left[3 \right]$$ Meyer, Mark, et al. "Discrete differential-geometry operators for triangulated 2-manifolds." Visualization and mathematics III. Berlin, Heidelberg: Springer Berlin Heidelberg, 2003. 35-57.
 
-### 5. Laplace-Beltrami算子的应用
 
-**1. mesh的per-vertex Global Point Signatures特征（GPS）**
+### 5. Laplace-Beltrami算子的性质
+
+* Laplace-Beltrami算子的eigenfunctions，$$\lbrace \phi_i \rbrace_{i=1}^{\infty}$$对于流形的isometric deformations是invariant的
+* 一个流形上的Laplace-Beltrami算子的eigenfunctions，$$\lbrace \phi_i \rbrace_{i=1}^{\infty}$$是该流形上所有$$L_2$$函数构成的函数空间的一组规范正交基（orthonormal basis），即对于任意的平方可积函数$$f$$（即$$\int_{\mathcal{M}} \langle f(x), f(x) \rangle dx < \infty$$）：
+
+$$f(p) = \sum_{i=1}^{\infty} a_i \phi_i(p), \  \text{where} \  a_i = \langle f, \phi_i \rangle, \forall p \in \mathcal{M}$$
+
+$$ \langle \phi_i, \phi_j \rangle = 1 \  \text{if} \  i \neq j, \  0  \text{if} \  i=j$$
+
+* 一个流形的Laplace-Beltrami算子里包含了该流形的测地距离信息，而Laplace-Beltrami算子可以由其eigenfunctions和eigenvalues完全表示，从而结合第一个结论可以得知，两个流形是isometrically deformable的，当且仅当它们的Laplace-Beltrami算子有相同的eigenvalues和eigenfunctions（如果是归一化的eigenfunctions，那么up to sign flipping，如果是一般的eigenfunctions，那么up to scaling）。
+
+> 参考文献
+> * $$\left[1 \right]$$ Ovsjanikov, Maks, Jian Sun, and Leonidas Guibas. "Global intrinsic symmetries of shapes." Computer graphics forum. Vol. 27. No. 5. Oxford, UK: Blackwell Publishing Ltd, 2008.
+> * $$\left[2 \right]$$ Rosenberg, Steven. The Laplacian on a Riemannian manifold: an introduction to analysis on manifolds. No. 31. Cambridge University Press, 1997.
+
+
+
+
+### 6. Laplace-Beltrami算子的应用
+
+**(1). mesh的per-vertex Global Point Signatures特征（GPS）**
 
 先介绍一下等距变换的概念。
 
