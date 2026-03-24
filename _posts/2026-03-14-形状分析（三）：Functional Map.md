@@ -128,6 +128,31 @@ $$C^{\top} C = I$$
 在设计优化算法时，上述约束均可以作为functional maps的约束加入。
 
 
+#### (4). Functional maps和Pointwise maps之间的互相转换
+
+由之前的推导可知，如果给定两个shapes $$\mathcal{M}, \mathcal{N}$$之间的bijective pointwise mapping $$T$$，两个shapes上函数空间的bases $$\lbrace \phi_i^{\mathcal{M}} \rbrace_{i=1}^{\infty}, \lbrace \phi_i^{\mathcal{N}} \rbrace_{i=1}^{\infty}$$ ，其functional representation $$C = \lbrace C_{ij} \rbrace_{i,j=1}^{\infty}$$即由$$\langle T_{\mathcal{F}}(\phi_i^{\mathcal{M}}), \phi_j^{\mathcal{N}} \rangle$$给出，而$$T_{\mathcal{F}}(\phi_i^{\mathcal{M}})(x) = \phi_i^{\mathcal{M}}(T^{-1}(x)), \forall x \in \mathcal{N}$$。
+
+但由functional map $$C$$去计算pointwise map $$T$$就不那么容易了。按照前面的推导，一个最直接的办法就是对于$$\mathcal{M}$$上的每个点$$x$$，在$$\mathcal{M}$$上定义一个indicator function $$f$$或者一个峰值位于$$x$$的高斯分布，从而利用functional map将$$f$$的系数向量$$\boldsymbol{a}$$转换为$$\mathcal{N}$$上所对应的函数的系数向量$$C \boldsymbol{a}$$，再将其转换为函数$$g$$，然后找到其最大值所对应的点，即为$$x$$的对应点。但该算法需要的计算量为$$O(\lvert \mathcal{V}_{\mathcal{M}} \rvert \cdot \lvert \mathcal{V}_{\mathcal{N}} \rvert)$$。
+
+如果使用规范正交基，比如Laplace-Beltrami算子的eigenfunctions构成的基，$$\lbrace \phi_i^{\mathcal{M}} \rbrace_{i=1}^{\infty}, \lbrace \phi_i^{\mathcal{N}} \rbrace_{i=1}^{\infty}$$，那么对于$$\mathcal{M}$$上的每个点$$x$$，在$$\mathcal{M}$$上定义的indicator function $$f$$的系数向量即为$$\boldsymbol{a} = (\phi_1^{\mathcal{M}}(x), \phi_2^{\mathcal{M}}(x), \cdots)$$，从而如果将$$Laplace-Beltrami算子的eigenfunctions按行排列成一个矩阵$$\Phi^{\mathcal{M}}$$，即每一行是一个eigenfunctions，那么每一列即对应一个点的indicator function的系数向量，从而$$C\Phi^{\mathcal{M}}$$对应每个$$\mathcal{M}$$上的点的indicator function由functional map映射之后在$$\mathcal{N}$$上的indicator function的系数向量，而类似的$$\Phi^{\mathcal{N}$$每一列也对应着$$\mathcal{N}$$上的一个点的indicator function的系数向量，从而我们只需要对于$$C\Phi^{\mathcal{M}}$$的每一列，找到最接近的$$\Phi^{\mathcal{N}$$的某一列即可，计算复杂度为$$O(\lvert \mathcal{V}_{\mathcal{M}} \rvert \text{log} \lvert \mathcal{V}_{\mathcal{M}} \rvert + \lvert \mathcal{V}_{\mathcal{N}} \rvert \text{log} \lvert \mathcal{V}_{\mathcal{N}} \rvert)$$。
+
+
+#### (5). 利用Functional map进行shape matching的算法
+
+在介绍matching算法之前，先介绍一个post-processing iterative refinement，其利用到第(4)节里我们关于functional map $$C$$的知识，对functional map $$C$$进行进一步的微调。假设我们已经得到了一个初始的functional map $$C_0$$，且其是由某个pointwise map得来的。由上一节我们可以知道$$C_0 \Phi^{\mathcal{M}}$$的每一列都应该分别和$$\Phi^{\mathcal{N}$$某一列相同。如果我们将$$\Phi^{\mathcal{M}}$$和$$\Phi^{\mathcal{N}$$每一列看作一个点，那么其表示两个维度为$$C_0$$维度大小的点云，而$$C_0$$尝试去rigidly align这两个点云，而我们又可知$$C_0$$还需要是orthonormal的，因此我们的优化目标就是寻找一个orthonormal的矩阵来对$$\Phi^{\mathcal{M}}$$和$$\Phi^{\mathcal{N}$$进行rigid alignment：
+
+* 对于$$C_0\Phi^{\mathcal{M}}$$的每一列$$x$$，找到其最接近的$$\Phi^{\mathcal{N}$$的某一列，$$\tilde{x}$$
+* 对于上面步骤找到的每一列和其对应的最接近的列，优化下述目标函数，其中$$C$$是orthonormal矩阵：$$\sum \lVert Cx - \tilde{x} \rVert$$
+* 令$$C_0 = C$$，并重复前两步直至收敛
+
+利用functional maps进行shape matching的算法流程如下：
+
+* 对于shapes $$\mathcal{M}, \mathcal{N}$$，计算其per-vertex的descriptors
+* 将其所有的线性约束进行整合，包括descriptor perservation约束，landmark point correspondence约束，segment correspondence约束，以及线性算子交换律约束，这些约束都是有关functional map的线性约束，将其整合为一个线性系统，利用least squared error作为objective来解出functional map $$C$$
+* 利用post-processing iterative refinemenet来refine得到的$$C$$
+* 利用第(4)节里的方法来计算得到pointwise map
+
+
 
 
 
