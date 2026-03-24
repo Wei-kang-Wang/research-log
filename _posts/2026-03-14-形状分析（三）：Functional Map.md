@@ -151,7 +151,7 @@ $$C^{\top} C = I$$
 
 #### (6). Additional阅读
 
-$$\left[[5](https://dl.acm.org/doi/10.1145/3084873.3084877) \right]$$和$$\left[[6]([https://dl.acm.org/doi/10.1145/3084873.3084877](https://www.sciencedirect.com/science/chapter/handbook/abs/pii/S1570865918300012)) \right]$$提供了更为完整和详尽的解释。
+$$\left[$$[5](https://dl.acm.org/doi/10.1145/3084873.3084877)$$\right]$$和$$\left[$$[6]([https://dl.acm.org/doi/10.1145/3084873.3084877](https://www.sciencedirect.com/science/chapter/handbook/abs/pii/S1570865918300012))$$\right]$$提供了更为完整和详尽的解释。
 
 [An Introductory Perspective on Functional Maps](https://xieyizheng.com/media/papers/intro-functional-maps/Report_Functional_Maps.pdf)也提供了一个解释。
 
